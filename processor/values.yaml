@@ -51,9 +51,9 @@ nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  create: true
+  create: false
   annotations: {}
-  name: ""
+  name: "default"
 
 podSecurityContext:
   fsGroup: 2000
