@@ -1,0 +1,91 @@
+replicaCount: 1
+
+# set this to use an existing secret rather than generate one
+existingSecret:
+
+istio:
+  enabled: false
+
+config:
+  externalSecret:
+    coreName: "setme"
+    createExternalSecret: false
+  host: "0.0.0.0"
+  port: 65433
+
+  postgres:
+    host: event-store-postgres-postgresql.foundation_processor-processor.svc.cluster.local
+    port: 5432
+    database: foundation
+    user: foundation
+    password: foundation
+    pool_min_size: 1
+    pool_max_size: 1
+
+  kafka:
+    cluster_host: "kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
+
+  hub:
+    host: http://hub:80
+    access_key_id: ""
+    secret_access_key: ""
+    identifier: ""
+    account: ""
+    partition: "ksa"
+    host: "http://foundation-registry.registry:80/api"
+
+  events:
+    openlineage_spark_topic: "_foundation_product_metadata"
+    foundation_events_topic: "_foundation_events"
+    foundation_profiling_topic: "_foundation_profiling"
+    foundation_validations_topic: "_foundation_validations"
+    foundation_classification_topic: "_foundation_classification"
+    foundation_notifications_topic: "_foundation_notifications"
+
+image:
+  repository: 061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/processor
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podSecurityContext:
+  fsGroup: 2000
+  #kyverno violation fix
+  runAsNonRoot: true
+  runAsUser: 1000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: false # ONLY FOR THE FILE-BASED IAM
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 65433
+
+ingress:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

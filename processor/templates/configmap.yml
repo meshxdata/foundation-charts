@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foundation-processor
+data:
+  MX_HOST_BIND: "{{ .Values.config.host }}"
+  MX_PORT_BIND: "{{ .Values.config.port }}"
+  MX_POSTGRES_HOST: "{{ .Values.config.postgres.host }}"
+  MX_POSTGRES_PORT: "{{ .Values.config.postgres.port }}"
+  MX_POSTGRES_DATABASE: "{{ .Values.config.postgres.database }}"
+  MX_POSTGRES_USER: "{{ .Values.config.postgres.user }}"
+  MX_POSTGRES_POOL_MIN_SIZE: "{{ .Values.config.postgres.pool_min_size }}"
+  MX_POSTGRES_POOL_MAX_SIZE: "{{ .Values.config.postgres.pool_max_size }}"
+  MX_HUB_HOST: "{{ .Values.config.hub.host }}"
+  MX_PARTITION: "{{ .Values.config.hub.partition }}"
+{{- if .Values.config.hub.identifier }}
+  MX_IDENTIFIER: "{{ .Values.config.hub.identifier }}"
+{{- end }}
+{{- if .Values.config.hub.account }}
+  MX_ACCOUNT: "{{ .Values.config.hub.account }}"
+{{- end }}
+{{- if .Values.config.hub.access_key_id }}
+  MX_ACCESS_KEY_ID: "{{ .Values.config.hub.access_key_id }}"
+{{- end }}
+  MX_KAFKA_BOOTSTRAP_SERVERS: "{{ .Values.config.kafka.cluster_host }}"
+  MX_OPENLINEAGE_SPARK_TOPIC: "{{ .Values.config.events.openlineage_spark_topic }}"
+  MX_FOUNDATION_EVENTS_TOPIC: "{{ .Values.config.events.foundation_events_topic }}"
+  MX_FOUNDATION_PROFILING_TOPIC: "{{ .Values.config.events.foundation_profiling_topic }}"
+  MX_FOUNDATION_VALIDATIONS_TOPIC: "{{ .Values.config.events.foundation_validations_topic }}"
+  MX_FOUNDATION_CLASSIFICATION_TOPIC: "{{ .Values.config.events.foundation_classification_topic }}"
+  MX_FOUNDATION_NOTIFICATIONS_TOPIC: "{{ .Values.config.events.foundation_notifications_topic }}"
