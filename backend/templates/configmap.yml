@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foundation-backend
+data:
+  MX_HOST_BIND: "{{ .Values.config.host }}"
+  MX_PORT_BIND: "{{ .Values.config.port }}"
+  MX_POSTGRES_HOST: "{{ .Values.config.postgres.host }}"
+  MX_POSTGRES_PORT: "{{ .Values.config.postgres.port }}"
+  MX_POSTGRES_DATABASE: "{{ .Values.config.postgres.database }}"
+  MX_POSTGRES_USER: "{{ .Values.config.postgres.user }}"
+  MX_POSTGRES_POOL_MIN_SIZE: "{{ .Values.config.postgres.pool_min_size }}"
+  MX_POSTGRES_POOL_MAX_SIZE: "{{ .Values.config.postgres.pool_max_size }}"

@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "chart.jobname" . }}
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
+spec:
+  ttlSecondsAfterFinished: 120
+  template:
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+      - name: migrations
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        command: ["bash", "-c"]
+        args:
+        - |
+            set -e
+            pogo migrate-yoyo --skip-files;
+            pogo apply;
+        {{- if .Values.istio.enabled }}
+          curl -fsI -X POST http://localhost:15020/quitquitquit
+        {{- end }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        envFrom:
+        - configMapRef:
+            name: foundation-backend
+        - secretRef:
+            name: foundation-backend
+      restartPolicy: OnFailure
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+  backoffLimit: 10
