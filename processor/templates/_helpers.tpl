@@ -5,14 +5,6 @@ Expand the name of the chart.
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
-{{- define "chart.docker_image" -}}
-{{- if .Values.image.tag }}
-{{- printf "%s:%s" .Values.image.repository .Values.image.tag }}
-{{- else }}
-{{- printf "%s:v%s" .Values.image.repository .Chart.AppVersion }}
-{{- end }}
-{{- end }}
-
 {{/*
 Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
@@ -36,10 +28,6 @@ Create chart name and version as used by the chart label.
 */}}
 {{- define "chart.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
-{{- end }}
-
-{{- define "chart.jobname" -}}
-{{- printf "%s-%s-%s" .Release.Name "migrations" .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
@@ -69,46 +57,5 @@ Create the name of the service account to use
 {{- default (include "chart.fullname" .) .Values.serviceAccount.name }}
 {{- end }}
 
-
-
-{{- define "chart.migration.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
-{{- end }}
-
 {{ .Chart.AppVersion | quote }}
 
-
-{{/*
-Return true if a secret object should be created
-*/}}
-{{- define "chart.createSecret" -}}
-{{- if .Values.existingSecret -}}
-{{- else -}}
-    {{- true -}}
-{{- end -}}
-{{- end -}}
-
-
-{{/*
-Get the secret name .
-*/}}
-{{- define "chart.secretName" -}}
-{{- if .Values.existingSecret }}
-    {{- printf "%s" (tpl .Values.existingSecret $) -}}
-{{- else -}}
-    {{- printf "%s" (include "chart.fullname" .) -}}
-{{- end -}}
-{{- end -}}
-
-
-
-{{/*
-Return true if a secret object should be created
-*/}}
-{{- define "chart.createExternalSecret" -}}
-{{- if .Values.config.externalSecret.createExternalSecret -}}
-    {{- true -}}
-{{- else -}}
-    {{- false -}}
-{{- end -}}
-{{- end -}}

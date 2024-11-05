@@ -14,7 +14,7 @@ spec:
       {{- end }}
       containers:
       - name: migrations
-        image: {{ include "chart.docker_image" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         command: ["bash", "-c"]
         args:
         - |
