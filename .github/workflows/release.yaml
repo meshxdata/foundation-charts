@@ -33,13 +33,3 @@ jobs:
           git config user.email "helm@meshx.io"
           git commit -m "Updated from ref: $GITHUB_SHA"
           git push
-
-      - name: Push New Files
-        shell: bash
-        run: |
-          git config user.name "helm"
-          git config user.email "helm@meshx.io"
-          git add $(git ls-files -o --exclude-standard)
-          git add index.yaml
-          git commit -m "Updated from ref: $GITHUB_SHA"
-          git push
