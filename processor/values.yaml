@@ -6,7 +6,6 @@ existingSecret:
 istio:
   enabled: false
 
-createSecret: false
 
 config:
   host: "0.0.0.0"
