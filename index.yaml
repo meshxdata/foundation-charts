@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-11-05T13:43:37.517407+01:00"
+    created: "2024-11-05T13:44:45.278645+01:00"
     description: A Helm chart for Kubernetes
-    digest: 8b4c747d195408f7ffc984c967ecb43b81b9097e4c60245f99bc2ff95a118db7
+    digest: 5bfd9988317bd59de1a131f43f2886a128da57e4ab83a5695e337e867f0dff43
     name: backend
     type: application
     urls:
@@ -13,8 +13,18 @@ entries:
     version: 0.1.0
   processor:
   - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2024-11-05T13:44:45.279981+01:00"
+    description: A Helm chart for the core event processor API
+    digest: 0e85a00290be3450641f378050d41b2a493f3d32269f751b6344a26f9b73673d
+    name: processor
+    type: application
+    urls:
+    - processor-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: 0.0.1
-    created: "2024-11-05T13:43:37.518129+01:00"
+    created: "2024-11-05T13:44:45.279473+01:00"
     description: A Helm chart for the core event processor API
     digest: 7a824b6278f5ea485ec686a64ad182f4ff5e9a543688ce649d87b5332c3279bf
     name: processor
@@ -25,12 +35,12 @@ entries:
   watcher:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-11-05T13:43:37.518637+01:00"
+    created: "2024-11-05T13:44:45.280408+01:00"
     description: A Helm chart for Kubernetes
-    digest: 2ecddd36b43eb1137143e0c2348b9d68acf7a7825f8116dfc953947ea98ef6fe
+    digest: 153646d5739929d073e26166b5010a03589476886bf5c5848fcaf769e241cc56
     name: watcher
     type: application
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-05T13:43:37.516136+01:00"
+generated: "2024-11-05T13:44:45.277648+01:00"
