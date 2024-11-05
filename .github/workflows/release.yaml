@@ -28,9 +28,9 @@ jobs:
         run: |
           helm package {backend,processor,watcher} -d .
           helm repo index .
+          git add .
           git config user.name "helm"
           git config user.email "helm@meshx.io"
-          git add .
           git commit -m "Updated from ref: $GITHUB_SHA"
           git push
 
