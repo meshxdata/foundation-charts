@@ -22,10 +22,25 @@ jobs:
         uses: azure/setup-helm@v1
         with:
           version: v3.4.0
+          
+      - name: Update
+        shell: bash
+        working-directory: src
+        run: |
+          helm packaged {backend,processor,watcher} -d .
+          helm repo index .
+          git config user.name "helm"
+          git config user.email "helm@meshx.io"
+          git add .
+          git commit -m "Updated from ref: $GITHUB_SHA"
+          git push
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
-        with:
-          charts_dir: charts
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Push New Files
+        shell: bash
+        run: |
+          git config user.name "helm"
+          git config user.email "helm@meshx.io"
+          git add $(git ls-files -o --exclude-standard)
+          git add index.yaml
+          git commit -m "Updated from ref: $GITHUB_SHA"
+          git push
