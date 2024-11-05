@@ -25,7 +25,6 @@ jobs:
           
       - name: Update
         shell: bash
-        working-directory: src
         run: |
           helm packaged {backend,processor,watcher} -d .
           helm repo index .
