@@ -1,0 +1,293 @@
+# Default values for hive-metastore.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+## @section Common Parameters
+
+##  nameOverride -- String to partially override hive-metastore.fullname template with a string (will prepend the release name)
+##
+nameOverride: ""
+
+##  fullnameOverride -- String to fully override hive-metastore.fullname template with a string
+##
+fullnameOverride: ""
+
+## Service account for Hive Metastore to use.
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+##
+serviceAccount:
+  ## @param serviceAccount.create Enable creation of ServiceAccount for Hive Metastore pod
+  ##
+  create: true
+  ## @param serviceAccount.name The name of the ServiceAccount to use.
+  ## If not set and create is true, a name is generated using the common.names.fullname template
+  ##
+  name: "hive-metastore"
+  ## @param serviceAccount.automountServiceAccountToken Allows auto mount of ServiceAccountToken on the serviceAccount created
+  ## Can be set to false if pods using this serviceAccount do not need to use K8s API
+  ##
+  automountServiceAccountToken: true
+  ## @param serviceAccount.annotations Additional custom annotations for the ServiceAccount
+  ##
+  annotations: {}
+
+## @section Istio
+
+istio:
+  enabled: false
+
+## @section Hive Metastore Parameters
+
+hiveMetastore:
+  ## @param hiveMetastore.replicaCount Number of Hive Metastore replicas
+  ##
+  ## Following the documentation, given Hive Metastore is stateless we could have more than one instance.
+  ## https://cwiki.apache.org/confluence/display/Hive/AdminManual+Metastore+Administration
+  replicaCount: 1
+
+  ##  image.repository The repository to use for the Hive Metastore image.
+  ##  image.pullPolicy the pull policy to use for the Hive Metastore image
+  ##  image.tag The Hive Metastore image tag. Defaults to the chart's AppVersion
+  image:
+    repository: "061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/hive-metastore"
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
+  ## @param hiveMetastore.podAnnotations [object] Add extra annotations to the Hive Metastore pod(s)
+  ##
+  podAnnotations: {}
+
+  ## @param hiveMetastore.podLabels [object] Add extra labels to the Hive Metastore pod(s)
+  ##
+  podLabels: {}
+
+  ## @param hiveMetastore.containerSecurityContext Security context for the container
+  ## Examples:
+  ## podSecurityContext:
+  ##    runAsNonRoot: true
+  ##    runAsUser: 1000
+  ##    readOnlyRootFilesystem: true
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 10001
+
+  ## @param hiveMetastore.service.type The service type to use for the Hive Metastore
+  ## @param hiveMetastore.service.port The service port to expose the Hive Metastore
+  service:
+    type: ClusterIP
+    port: 9083
+
+
+  ## @param hiveMetastore.resources.limits [object] The resources limits for the pod
+  ## @param hiveMetastore.resources.requests [object] The requested resources for the pod
+  resources:
+    ## Example:
+    ## limits:
+    ##    cpu: 2
+    ##    memory: 2Gi
+    limits: {}
+    ## Examples:
+    ## requests:
+    ##    cpu: 1
+    ##    memory: 1Gi
+    requests: {}
+
+  ## @param hiveMetastore.nodeSelector [object] Node labels for pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  ## @param hiveMetastore.tolerations [array] Tolerations for Hive Metastore pod assignment.
+  ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+  ## @param hiveMetastore.affinity [object] Affinity and anti-affinity for Hive Metastore pod assignment.
+  ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity: {}
+
+  ## Configure the ingress resource that allows you to access the Hive Metastore installation.
+  ## ref: http://kubernetes.io/docs/user-guide/ingress/
+  ## @param hiveMetastore.ingress.enabled Set to true to enable ingress record generation
+  ## @param hiveMetastore.ingress.className Specifies ingressClassName for clusters >= 1.18+
+  ## @param hiveMetastore.ingress.annotations [object] Ingress annotations done as key:value pairs
+  ## @param hiveMetastore.ingress.hosts The list of hostnames to be covered with this ingress record.
+  ## @param hiveMetastore.ingress.tls [array] Custom ingress TLS configuration
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+    # kubernetes.io/ingress.class: kong
+    # kubernetes.io/tls-acme: "true"
+    hosts: []
+    # - host: chart-example.local
+    #   paths:
+    #   - path: /
+    #     pathType: ImplementationSpecific
+
+    tls: []
+    # - secretName: chart-example-tls
+    #   hosts:
+    #   - chart-example.local
+
+  ## @param hiveMetastore.extraEnvFrom Allows to propagate environment variables from various sources, for example k8s secrets
+  extraEnvFrom: []
+  # extraEnvFrom:
+  #   - secretRef:
+  #       name: "hive-metastore-postgresql-credentials"
+  #   - secretRef:
+  #       name: "hive-metastore-minio-credentials"
+  
+  ## @param hiveMetastore.extraEnv YAML sequence of mappings with two keys "name" and "value" representing environment variables
+  extraEnv: []
+  # - name: METASTORE_DB_HOSTNAME
+  #   value: localhost
+  
+  ## @param hiveMetastore.configProperties YAML sequence of mappings with two keys "name" and "value" representing 
+  ## hive metastore configuration properties, that would be rendered into metastore-site.xml as follows
+  ##
+  ## <property>
+  ##   <name>$name</name>
+  ##   <value>$value</value>
+  ## </property>  
+  ##
+  ## example
+  ##
+  ## - name: "hive.metastore.schema.verification"
+  ##   value: "true"
+  configProperties:
+    - name: "hive.metastore.schema.verification"
+      value: "true"
+    - name: "fs.s3a.path.style.access"
+      value: "true"
+    - name: "iceberg.engine.hive.enabled"
+      value: "true"
+    - name: "metastore.warehouse.dir"
+      value: "s3a://warehouse/foundation"
+
+# @ Section initDatabaseJob parameters
+initDatabaseJob:
+  enabled: true
+  ## @param initJob.podAnnotations [object] Add extra annotations to the init job pod(s)
+  ##
+  podAnnotations: {}
+    
+  ## Init Job resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ## We usually recommend not to specify default resources and to leave this as a conscious
+  ## choice for the user. This also increases chances charts run on environments with little
+  ## resources, such as Minikube. If you do want to specify resources, uncomment the following
+  ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  ## @param initJob.resources.limits [object] The resources limits for the container
+  ## @param initJob.resources.requests [object] The requested resources for the container
+  resources:
+    ## Example:
+    ## limits:
+    ##    cpu: 2
+    ##    memory: 2Gi
+    limits: {}
+    ## Examples:
+    ## requests:
+    ##    cpu: 1
+    ##    memory: 1Gi
+    requests: {}
+
+# @ Section initDatabaseJob parameters
+addSchemaJob:
+  enabled: true
+  ## @param initJob.podAnnotations [object] Add extra annotations to the init job pod(s)
+  ##
+  podAnnotations: {}
+    
+  ## Init Job resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ## We usually recommend not to specify default resources and to leave this as a conscious
+  ## choice for the user. This also increases chances charts run on environments with little
+  ## resources, such as Minikube. If you do want to specify resources, uncomment the following
+  ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  ## @param initJob.resources.limits [object] The resources limits for the container
+  ## @param initJob.resources.requests [object] The requested resources for the container
+  resources:
+    ## Example:
+    ## limits:
+    ##    cpu: 2
+    ##    memory: 2Gi
+    limits: {}
+    ## Examples:
+    ## requests:
+    ##    cpu: 1
+    ##    memory: 1Gi
+    requests: {}
+
+## @section Hive Metastore PostgreSQL parameters
+##
+## PostgreSQL chart configuration
+## ref: https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml
+## 
+postgresql:
+  enabled: true
+  ## @section Global parameters
+  ## Please, note that this will override the parameters, including dependencies, configured to use the global value
+  ##
+  global:
+    ## @param global.storageClass Global StorageClass for Persistent Volume(s)
+    storageClass: "standard"
+
+  ## Authentication parameters
+  auth:
+    ## @param username Name for a custom user to create
+    username: "hive_metastore"
+    ## @param password Password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
+    password: "hive_metastore"
+    ## @param database Name for a custom database to create
+    database: "hive_metastore"
+    ## @param auth.existingSecret Name of existing secret to use for PostgreSQL credentials. `auth.postgresPassword`, `auth.password`, and `auth.replicationPassword` will be ignored and picked up from this secret
+    ##
+    existingSecret: ""
+  ## @section PostgreSQL Primary parameters
+  ##
+  primary:
+    ## PostgreSQL Primary persistence configuration
+    ##
+    persistence:
+      ## @param primary.persistence.size PVC Storage Request for PostgreSQL volume
+      size: 50Gi
+
+
+## @section External Hive Metastore PostgreSQL configuration
+## 
+## All of these values are only used when postgresql.enabled is set to false
+## @param externalDatabase.host Database host
+## @param externalDatabase.username non-root Username for Hive Metastore Database
+## @param externalDatabase.password Database password
+## @param externalDatabase.existingSecret Name of an existing secret resource containing the DB password. Secret key MUST be `password`
+## @param externalDatabase.database Database name
+## @param externalDatabase.port Database port number
+##
+externalDatabase:
+  host: localhost
+  username: "hive_metastore_ext"
+  password: "hive_metastore_ext"
+  existingSecret: ""
+  database: "hive_metastore_ext"
+  port: 5432
+
+
+## @section Object Store configuration
+## 
+## @param objectStore.minio.endpoint URL of object store API. Defaults to cluster MinIO deployment
+## @param objectStore.minio.accessKey Access key for the object store
+## @param objectStore.minio.secretKey Secret key for the object store 
+## @param objectStore.minio.existingSecret Name of existing secret to use for Minio credentials. `objectStore.minio.accessKey`and `objectStore.minio.secretKey` will be ignored and picked up from this secret
+## @param objectStore.minio.existingSecretAccessKey Name of existing secret key containing object store accessKey. Defaults to CONSOLE_ACCESS_KEY
+## @param objectStore.minio.existingSecretSecretKey Name of existing secret key containing object store secretKey. Defaults to CONSOLE_SECRET_KEY
+objectStore:
+  minio:
+    endpoint: "http://minio.minio-tenant.svc.cluster.local:80"
+    accessKey: "minio"
+    secretKey: "minio123"
+    existingSecret: ""
+    existingSecretAccessKey: ""
+    existingSecretSecretKey: ""

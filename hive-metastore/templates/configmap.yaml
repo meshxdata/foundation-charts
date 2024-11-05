@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hive-metastore.name" . }}-conf
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "hive-metastore.labels" $ | trim | nindent 4 }}
+data:
+{{- (tpl (.Files.Glob "config/*.xml").AsConfig . ) | nindent 2 }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hive-metastore.name" . }}-add-schema
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "hive-metastore.labels" $ | trim | nindent 4 }}
+data:
+  add-schema.sql: INSERT INTO public."DBS" ("DB_ID", "DESC", "DB_LOCATION_URI",
+    "NAME", "OWNER_NAME", "OWNER_TYPE", "CTLG_NAME") VALUES (2, 'Foundation database', 's3a://warehouse/foundation/foundation.db',
+    'foundation', 'admin', 'USER', 'hive') ON CONFLICT DO NOTHING;

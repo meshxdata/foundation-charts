@@ -1,0 +1,49 @@
+<configuration>
+    <property>
+        <name>metastore.thrift.uris</name>
+        <value>thrift://%HIVE_METASTORE_SERVICE_NAME%:%HIVE_METASTORE_SERVICE_PORT%</value>
+        <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
+    </property>
+    <property>
+        <name>metastore.task.threads.always</name>
+        <value>org.apache.hadoop.hive.metastore.events.EventCleanerTask,org.apache.hadoop.hive.metastore.MaterializationsCacheCleanerTask</value>
+    </property>
+    <property>
+        <name>metastore.expression.proxy</name>
+        <value>org.apache.hadoop.hive.metastore.DefaultPartitionExpressionProxy</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:postgresql://%HIVE_METASTORE_DATABASE_URL%</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>%HIVE_METASTORE_DATABASE_USERNAME%</value>
+    </property>
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>%HIVE_METASTORE_DATABASE_PASSWORD%</value>
+    </property>
+    <property>
+        <name>fs.s3a.access.key</name>
+        <value>%S3_MINIO_ACCESS_KEY%</value>
+    </property>
+    <property>
+        <name>fs.s3a.secret.key</name>
+        <value>%S3_MINIO_SECRET_KEY%</value>
+    </property>
+    <property>
+        <name>fs.s3a.endpoint</name>
+        <value>%S3_MINIO_ENDPOINT%</value>
+    </property>
+    {{- range $v := .Values.hiveMetastore.configProperties }}
+    <property>
+        <name>{{ $v.name }}</name>
+        <value>{{ $v.value }}</value>
+    </property>
+    {{- end }}
+</configuration>

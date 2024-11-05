@@ -1,0 +1,119 @@
+---
+{{ if .Values.initDatabaseJob.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "hive-metastore.name" . }}-init-database
+  namespace: {{ .Release.Namespace }}
+spec:
+  template:
+    metadata:
+      name: {{ include "hive-metastore.name" . }}-init-database
+      {{- if .Values.initDatabaseJob.podAnnotations }}
+      annotations:
+        {{- toYaml .Values.initDatabaseJob.podAnnotations | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- if or (.Values.serviceAccount.create) (.Values.serviceAccountName) }}
+      serviceAccountName: {{ include "hive-metastore.serviceAccountName" . }}
+      {{- end }}
+      securityContext:
+        runAsUser: {{ .Values.runAsUser }}
+      initContainers:
+      - name: wait-for-postgres
+        image: "{{ .Values.hiveMetastore.image.repository}}:{{ .Values.hiveMetastore.image.tag | default .Chart.AppVersion }}"
+        command: ['/bin/sh', '-c', 'until pg_isready -U {{ include "hive-metastore.postgresql.username" . }} -d {{ include "hive-metastore.postgresql.name" . }} -h {{ include "hive-metastore.postgresql.host" . }} -p {{ include "hive-metastore.postgresql.port" . }}; do echo waiting for postgres; sleep 5; done']
+      containers:
+      - name: {{ include "hive-metastore.name" . }}-init-database
+        image: "{{ .Values.hiveMetastore.image.repository}}:{{ .Values.hiveMetastore.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.hiveMetastore.image.pullPolicy }}
+        command: ['/bin/sh', '-c', '/opt/hive-metastore/bin/init-hive-metastore.sh']
+        env:
+          - name: HIVE_METASTORE_DATABASE_URL
+            value: {{ include "hive-metastore.postgresql.url" . }}
+          - name: HIVE_METASTORE_DATABASE_HOST
+            value: {{ include "hive-metastore.postgresql.host" . }}
+          - name: HIVE_METASTORE_DATABASE_USERNAME
+            value: {{ include "hive-metastore.postgresql.username" . }}
+          - name: HIVE_METASTORE_DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "hive-metastore.postgresql.secretName" . }}
+                key: {{ include "hive-metastore.postgresql.userPasswordKey" . }}
+        volumeMounts:
+          - name: hive-metastore-config
+            mountPath: /opt/hive-metastore/metastore-site.xml
+            subPath: metastore-site.xml
+        resources:
+          {{- toYaml .Values.initDatabaseJob.resources | nindent 10 }}
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: hive-metastore-config
+          configMap:
+            name: {{ include "hive-metastore.name" . }}-conf
+      restartPolicy: Never
+{{- end }}
+
+---
+{{ if .Values.addSchemaJob.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "hive-metastore.name" . }}-add-schema
+  namespace: {{ .Release.Namespace }}
+spec:
+  template:
+    metadata:
+      name: {{ include "hive-metastore.name" . }}-add-schema
+      {{- if .Values.addSchemaJob.podAnnotations }}
+      annotations:
+        {{- toYaml .Values.addSchemaJob.podAnnotations | nindent 8 }}
+      {{- end }}
+    spec:
+      {{- if or (.Values.serviceAccount.create) (.Values.serviceAccountName) }}
+      serviceAccountName: {{ include "hive-metastore.serviceAccountName" . }}
+      {{- end }}
+      securityContext:
+        runAsUser: {{ .Values.runAsUser }}
+      initContainers:
+      - name: wait-for-hive-metastore
+        image: "alpine/k8s:1.24.8"
+        command: ['/bin/sh', '-c', 'kubectl wait pods -n {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "hive-metastore.name" . }}" --for condition=Ready --timeout=720s']
+      containers:
+      - name: {{ include "hive-metastore.name" . }}-add-schema
+        image: "{{ .Values.hiveMetastore.image.repository}}:{{ .Values.hiveMetastore.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.hiveMetastore.image.pullPolicy }}
+        command: ['/bin/sh', '-c', 'psql -a -f /opt/add-schema.sql']
+        env:
+          - name: PGHOST
+            value: {{ include "hive-metastore.postgresql.host" . }}  
+          - name: PGPORT
+            value: {{ include "hive-metastore.postgresql.port" . | quote }}
+          - name: PGDATABASE
+            value: {{ include "hive-metastore.postgresql.name" . }} 
+          - name: PGUSER
+            value: {{ include "hive-metastore.postgresql.username" . }}
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "hive-metastore.postgresql.secretName" . }}
+                key: {{ include "hive-metastore.postgresql.userPasswordKey" . }}
+        volumeMounts:
+          - name: add-schema
+            mountPath: /opt/add-schema.sql
+            subPath: add-schema.sql
+        resources:
+          {{- toYaml .Values.addSchemaJob.resources | nindent 10 }}
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: add-schema
+          configMap:
+            name: {{ include "hive-metastore.name" . }}-add-schema
+      restartPolicy: Never
+{{- end }}
