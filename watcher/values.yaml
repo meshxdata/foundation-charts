@@ -10,18 +10,24 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 
+config:
+  host: 0.0.0.0
+  port: 8080
+  postgres:
+    host: foundation-postgres
+    port: 5432
+    database: foundation
+    user: foundation
+    pool_min_size: 1
+    pool_max_size: 5
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  # Specifies whether a service account should be created
   create: false
-  # Annotations to add to the service account
   annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
   name: "default"
 
 podAnnotations: {}

@@ -10,9 +10,8 @@ istio:
 config:
   host: "0.0.0.0"
   port: 65433
-
   postgres:
-    host: event-store-postgres-postgresql.foundation_processor-processor.svc.cluster.local
+    host: foundation-postgres
     port: 5432
     database: foundation
     user: foundation
@@ -63,7 +62,7 @@ securityContext:
   capabilities:
     drop:
       - ALL
-  readOnlyRootFilesystem: false # ONLY FOR THE FILE-BASED IAM
+  readOnlyRootFilesystem: false
   runAsNonRoot: true
   runAsUser: 1000
 
