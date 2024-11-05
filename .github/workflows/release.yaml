@@ -26,11 +26,11 @@ jobs:
       - name: Update
         shell: bash
         run: |
-          helm packaged {backend,processor,watcher} -d .
+          helm package {backend,processor,watcher} -d .
           helm repo index .
+          git add .
           git config user.name "helm"
           git config user.email "helm@meshx.io"
-          git add .
           git commit -m "Updated from ref: $GITHUB_SHA"
           git push
 
