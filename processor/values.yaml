@@ -6,10 +6,9 @@ existingSecret:
 istio:
   enabled: false
 
+createSecret: false
+
 config:
-  externalSecret:
-    coreName: "setme"
-    createExternalSecret: false
   host: "0.0.0.0"
   port: 65433
 
