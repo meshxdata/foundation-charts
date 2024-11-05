@@ -3,9 +3,13 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
+<<<<<<< HEAD
     created: "2024-11-05T18:45:30.000161+01:00"
+=======
+    created: "2024-11-05T17:43:47.551535506Z"
+>>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
     description: A Helm chart for Kubernetes
-    digest: 9cb57efdfff958da787b1cf0f93610a5b89ae24ec55acf1a9c5d490feec90d33
+    digest: ffd3ff9754ba2f698ade879b8a23bcee24252e56ad820d7dca9d390c69ff1d55
     name: backend
     type: application
     urls:
@@ -37,9 +41,13 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
+<<<<<<< HEAD
     created: "2024-11-05T18:45:30.007252+01:00"
+=======
+    created: "2024-11-05T17:43:47.552152516Z"
+>>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
     description: A Helm chart for the Foundation Processor
-    digest: 81bdde627811d31c1d8c21a2b5e58336d358731a31c08207a41d1df9cac2c41d
+    digest: 498add6e492dd30bd1b6e9dd78eea941895f8c7768ea74f3ee270987b320e8af
     name: processor
     type: application
     urls:
@@ -47,12 +55,20 @@ entries:
     version: 0.1.0
   watcher:
   - apiVersion: v2
+<<<<<<< HEAD
     created: "2024-11-05T18:45:30.008267+01:00"
+=======
+    created: "2024-11-05T17:43:47.552544887Z"
+>>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
     description: A Helm chart for the Foundation Watcher
-    digest: 8e74e991718ef737980862d9479cabaadf07ca42b0fb9e6ae8cfd3f0b05d1683
+    digest: fbb64bee14364ebe2517646c4540cdee6c24b3c91b9524512a5c44fc58fabf0e
     name: watcher
     type: application
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
+<<<<<<< HEAD
 generated: "2024-11-05T18:45:29.998681+01:00"
+=======
+generated: "2024-11-05T17:43:47.550321124Z"
+>>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
