@@ -3,13 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-<<<<<<< HEAD
-    created: "2024-11-05T18:45:30.000161+01:00"
-=======
-    created: "2024-11-05T17:43:47.551535506Z"
->>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
+    created: "2024-11-05T17:46:08.632946544Z"
     description: A Helm chart for Kubernetes
-    digest: ffd3ff9754ba2f698ade879b8a23bcee24252e56ad820d7dca9d390c69ff1d55
+    digest: 6abd76e9c15c8207608026037a3924d84b08a12bb9d9a50fd3ad77d1c1523fff
     name: backend
     type: application
     urls:
@@ -18,7 +14,7 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-11-05T18:45:30.006252+01:00"
+    created: "2024-11-05T17:46:08.63829225Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -41,13 +37,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-<<<<<<< HEAD
-    created: "2024-11-05T18:45:30.007252+01:00"
-=======
-    created: "2024-11-05T17:43:47.552152516Z"
->>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
+    created: "2024-11-05T17:46:08.638708635Z"
     description: A Helm chart for the Foundation Processor
-    digest: 498add6e492dd30bd1b6e9dd78eea941895f8c7768ea74f3ee270987b320e8af
+    digest: 051ffac0a5da9922ea51e79e2f219021510282a788ea5ce0732657bd8983eaf6
     name: processor
     type: application
     urls:
@@ -55,20 +47,12 @@ entries:
     version: 0.1.0
   watcher:
   - apiVersion: v2
-<<<<<<< HEAD
-    created: "2024-11-05T18:45:30.008267+01:00"
-=======
-    created: "2024-11-05T17:43:47.552544887Z"
->>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
+    created: "2024-11-05T17:46:08.639340362Z"
     description: A Helm chart for the Foundation Watcher
-    digest: fbb64bee14364ebe2517646c4540cdee6c24b3c91b9524512a5c44fc58fabf0e
+    digest: c1fcdffdc6c42a23f45ca5149f6239efaa9ca5d425f6d77afa8b4a86754532f9
     name: watcher
     type: application
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
-<<<<<<< HEAD
-generated: "2024-11-05T18:45:29.998681+01:00"
-=======
-generated: "2024-11-05T17:43:47.550321124Z"
->>>>>>> 3418bdf9bc51542ab3ad4052824517996681094d
+generated: "2024-11-05T17:46:08.631586926Z"
