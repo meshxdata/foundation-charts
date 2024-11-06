@@ -38,6 +38,8 @@ spec:
                 name: foundation-watcher
             - secretRef:
                 name: foundation-watcher
+            - secretRef:
+                name: postgres
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

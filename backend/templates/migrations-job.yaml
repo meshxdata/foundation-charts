@@ -30,6 +30,8 @@ spec:
             name: foundation-backend
         - secretRef:
             name: foundation-backend
+        - secretRef:
+            name: postgres
       restartPolicy: OnFailure
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
