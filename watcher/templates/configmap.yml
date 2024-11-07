@@ -12,3 +12,11 @@ data:
   MX_POSTGRES_POOL_MIN_SIZE: "{{ .Values.config.postgres.pool_min_size }}"
   MX_POSTGRES_POOL_MAX_SIZE: "{{ .Values.config.postgres.pool_max_size }}"
   MX_KAFKA_CLUSTER_HOST: "{{ .Values.config.kafka_cluster_host }}"
+  MX_EVENTS_KAFKA_TOPIC: "{{ .Values.config.events_kafka_topic }}"
+  MX_DEBUG: "false"
+  MX_ENV: "development"
+  MX_RELEASE_TAG: "latest"
+  MX_EXTERNAL_HOST: "localhost"
+  MX_API_PREFIX: "/api"
+  MX_LOGGING_LEVEL: "debug"
+  
