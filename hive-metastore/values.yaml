@@ -228,12 +228,8 @@ addSchemaJob:
 ## 
 postgresql:
   enabled: true
-  ## @section Global parameters
-  ## Please, note that this will override the parameters, including dependencies, configured to use the global value
-  ##
   global:
-    ## @param global.storageClass Global StorageClass for Persistent Volume(s)
-    storageClass: "standard"
+    storageClass: ""
 
   ## Authentication parameters
   auth:
