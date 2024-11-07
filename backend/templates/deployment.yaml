@@ -38,8 +38,12 @@ spec:
                 name: foundation-watcher
             - secretRef:
                 name: foundation-watcher
-            - secretRef:
-                name: postgres
+          env:
+          - name: MX_POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                  name: postgres
+                  key: superUserPassword
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

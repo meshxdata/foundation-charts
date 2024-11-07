@@ -20,6 +20,8 @@ config:
     user: foundation
     pool_min_size: 1
     pool_max_size: 5
+    kafka_cluster_host: "kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
+    events_kafka_topic: "_foundation_events"
 
 imagePullSecrets: []
 nameOverride: ""
