@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-11-07T11:16:41.103202+01:00"
+    created: "2024-11-07T10:17:00.987010263Z"
     description: A Helm chart for Kubernetes
-    digest: 11a0341fc57f1f451ad70c8e8e8c804f179d452e9515caa2760d69caac25b41f
+    digest: 5ced29f8b16df083005e86a3c1d5935672bd7a6c52205db348198f2a3276d821
     name: backend
     type: application
     urls:
@@ -14,7 +14,7 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2024-11-07T11:16:41.110097+01:00"
+    created: "2024-11-07T10:17:00.992363913Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -37,9 +37,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-11-07T11:16:41.110657+01:00"
+    created: "2024-11-07T10:17:00.992752541Z"
     description: A Helm chart for the Foundation Processor
-    digest: 98c21e72f7907f3df8d6f090c539b36102caced4262443cb80635756738d157d
+    digest: 1199dd4fd6ffcc70396486086815a6d511a53faaf2ca5023bf6a5114bcc7dfeb
     name: processor
     type: application
     urls:
@@ -47,12 +47,12 @@ entries:
     version: 0.1.0
   watcher:
   - apiVersion: v2
-    created: "2024-11-07T11:16:41.111178+01:00"
+    created: "2024-11-07T10:17:00.993166066Z"
     description: A Helm chart for the Foundation Watcher
-    digest: 717b480e08d1b625c595df8bc78050ae9e5ea51ffc2a1b0c838be8eb196e42f4
+    digest: 89542d3737452ef3702f3f6c642ce64095f3f5fdf1616706df825e955861b9b5
     name: watcher
     type: application
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-07T11:16:41.101227+01:00"
+generated: "2024-11-07T10:17:00.985546586Z"
