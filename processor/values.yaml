@@ -22,15 +22,6 @@ config:
   kafka:
     cluster_host: "kafka-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092"
 
-  hub:
-    host: http://hub:80
-    access_key_id: ""
-    secret_access_key: ""
-    identifier: ""
-    account: ""
-    partition: "ksa"
-    host: "http://foundation-registry.registry:80/api"
-
   events:
     openlineage_spark_topic: "_foundation_product_metadata"
     foundation_events_topic: "_foundation_events"

@@ -11,17 +11,6 @@ data:
   MX_POSTGRES_USER: "{{ .Values.config.postgres.user }}"
   MX_POSTGRES_POOL_MIN_SIZE: "{{ .Values.config.postgres.pool_min_size }}"
   MX_POSTGRES_POOL_MAX_SIZE: "{{ .Values.config.postgres.pool_max_size }}"
-  MX_HUB_HOST: "{{ .Values.config.hub.host }}"
-  MX_PARTITION: "{{ .Values.config.hub.partition }}"
-{{- if .Values.config.hub.identifier }}
-  MX_IDENTIFIER: "{{ .Values.config.hub.identifier }}"
-{{- end }}
-{{- if .Values.config.hub.account }}
-  MX_ACCOUNT: "{{ .Values.config.hub.account }}"
-{{- end }}
-{{- if .Values.config.hub.access_key_id }}
-  MX_ACCESS_KEY_ID: "{{ .Values.config.hub.access_key_id }}"
-{{- end }}
   MX_KAFKA_BOOTSTRAP_SERVERS: "{{ .Values.config.kafka.cluster_host }}"
   MX_OPENLINEAGE_SPARK_TOPIC: "{{ .Values.config.events.openlineage_spark_topic }}"
   MX_FOUNDATION_EVENTS_TOPIC: "{{ .Values.config.events.foundation_events_topic }}"
