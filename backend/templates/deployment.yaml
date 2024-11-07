@@ -35,10 +35,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: foundation-watcher
+                name: foundation-backend
             {{- if .Values.development.enabled -}}                
             - secretRef:
-                name: foundation-watcher
+                name: foundation-backend
             {{- end }}
           env:
           - name: MX_POSTGRES_PASSWORD
