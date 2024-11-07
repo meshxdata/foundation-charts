@@ -1,5 +1,8 @@
 replicaCount: 1
 
+development:
+  enabled: false
+
 image:
   repository: 061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/backend
   pullPolicy: IfNotPresent
