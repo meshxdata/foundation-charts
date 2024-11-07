@@ -36,8 +36,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: foundation-watcher
+            {{- if .Values.development.enabled -}}                
             - secretRef:
                 name: foundation-watcher
+            {{- end }}
           env:
           - name: MX_POSTGRES_PASSWORD
             valueFrom:
