@@ -18,5 +18,5 @@ data:
   MX_RELEASE_TAG: "latest"
   MX_EXTERNAL_HOST: "localhost"
   MX_API_PREFIX: "/api"
-  MX_LOGGING_LEVEL: "debug"
+  MX_LOGGING_LEVEL: "DEBUG"
   
