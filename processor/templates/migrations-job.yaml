@@ -6,6 +6,7 @@ metadata:
     {{- include "chart.labels" . | nindent 4 }}
 spec:
 #  ttlSecondsAfterFinished: 120
+#  backoffLimit: 100
   template:
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -39,4 +40,3 @@ spec:
       restartPolicy: OnFailure
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-  backoffLimit: 10
