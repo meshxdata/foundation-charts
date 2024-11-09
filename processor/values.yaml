@@ -13,8 +13,8 @@ config:
   postgres:
     host: foundation-postgres
     port: 5432
-    database: foundation
-    user: foundation
+    database: watcher
+    user: watcher
     pool_min_size: 1
     pool_max_size: 5
 
