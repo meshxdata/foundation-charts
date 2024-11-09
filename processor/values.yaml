@@ -20,7 +20,7 @@ config:
 
 
   kafka:
-    cluster_host: "foundation-kafka-kafka-bootstrap.kafka.svc.cluster.local:9092"
+    cluster_host: "foundation-kafka-kafka-bootstrap.foundation.svc.cluster.local:9092"
 
   events:
     openlineage_spark_topic: "_foundation_product_metadata"
