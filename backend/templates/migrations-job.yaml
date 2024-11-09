@@ -21,7 +21,7 @@ spec:
         - |
             set -e
             pogo migrate-yoyo --skip-files;
-            pogo apply;
+            pogo apply -vvv;
         {{- if .Values.istio.enabled }}
           curl -fsI -X POST http://localhost:15020/quitquitquit
         {{- end }}
