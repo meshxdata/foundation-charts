@@ -227,21 +227,21 @@ addSchemaJob:
 ## ref: https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml
 ## 
 postgresql:
-  enabled: true
+  enabled: false
   global:
     storageClass: ""
 
   ## Authentication parameters
   auth:
     ## @param username Name for a custom user to create
-    username: "hive_metastore"
+    username: "hive""
     ## @param password Password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
-    password: "hive_metastore"
+    password: ""
     ## @param database Name for a custom database to create
-    database: "hive_metastore"
+    database: "hive"
     ## @param auth.existingSecret Name of existing secret to use for PostgreSQL credentials. `auth.postgresPassword`, `auth.password`, and `auth.replicationPassword` will be ignored and picked up from this secret
     ##
-    existingSecret: ""
+    existingSecret: "postgres""
   ## @section PostgreSQL Primary parameters
   ##
   primary:
@@ -263,11 +263,11 @@ postgresql:
 ## @param externalDatabase.port Database port number
 ##
 externalDatabase:
-  host: localhost
-  username: "hive_metastore_ext"
-  password: "hive_metastore_ext"
-  existingSecret: ""
-  database: "hive_metastore_ext"
+  host: foundation-postgres
+  username: "hive"
+  password: ""
+  existingSecret: "postgres"
+  database: "hive"
   port: 5432
 
 
@@ -281,7 +281,7 @@ externalDatabase:
 ## @param objectStore.minio.existingSecretSecretKey Name of existing secret key containing object store secretKey. Defaults to CONSOLE_SECRET_KEY
 objectStore:
   minio:
-    endpoint: "http://minio.minio-tenant.svc.cluster.local:80"
+    endpoint: "https://minio.foundation.svc.cluster.local"
     accessKey: "minio"
     secretKey: "minio123"
     existingSecret: ""
