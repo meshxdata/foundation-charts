@@ -45,7 +45,7 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: "tailscale"
   annotations:
     kubernetes.io/ingress.class: tailscale
