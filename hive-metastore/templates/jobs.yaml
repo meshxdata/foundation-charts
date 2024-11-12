@@ -48,8 +48,6 @@ spec:
         resources:
           {{- toYaml .Values.initDatabaseJob.resources | nindent 10 }}
       {{- if .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
       {{- end }}
       volumes:
         - name: hive-metastore-config
