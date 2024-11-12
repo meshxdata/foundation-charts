@@ -51,21 +51,18 @@ ingress:
     kubernetes.io/ingress.class: tailscale
     kubernetes.io/tls-acme: "true"
   hosts:
-    - host: backend
+    - host: www.wolf-anoles.ts.net
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls:
-    - secretName: backend-tls
-      hosts:
-        - backend
 
-resources: {}
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+resources: 
+  limits:
+     cpu: 100m
+     memory: 128Mi
+  requests:
+     cpu: 100m
+     memory: 128Mi
 
 autoscaling:
   enabled: false
