@@ -28,6 +28,7 @@ spec:
         image: "{{ .Values.hiveMetastore.image.repository}}:{{ .Values.hiveMetastore.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.hiveMetastore.image.pullPolicy }}
         command: ['/bin/sh', '-c', '/opt/hive-metastore/bin/init-hive-metastore.sh']
+        serviceAccountName: {{ include "hive-metastore.serviceAccountName" . }}
         env:
           - name: HIVE_METASTORE_DATABASE_URL
             value: {{ include "hive-metastore.postgresql.url" . }}
