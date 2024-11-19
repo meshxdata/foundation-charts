@@ -45,8 +45,8 @@ spec:
                   name: postgres
                   key: superUserPassword
           ports:
-            - name: http
-              containerPort: 8080
+            - name: foundation-watcher
+              containerPort: 65432
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
