@@ -229,7 +229,7 @@ addSchemaJob:
 postgresql:
   enabled: false
   global:
-    storageClass: ""
+    storageClass: "gp2"
 
   ## Authentication parameters
   auth:
