@@ -50,6 +50,10 @@ spec:
                   key: superUserPassword
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - name: socket
+              containerPort: 65433
+              protocol: TCP
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
