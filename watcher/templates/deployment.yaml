@@ -50,6 +50,25 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}-agent
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          commands: ["watcher", "run-watcher"]
+          envFrom:
+            - configMapRef:
+                name: foundation-watcher
+            - secretRef:
+                name: foundation-watcher
+          env:
+          - name: MX_POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                  name: postgres
+                  key: superUserPassword
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
