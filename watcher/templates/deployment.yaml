@@ -44,18 +44,11 @@ spec:
               secretKeyRef:
                   name: postgres
                   key: superUserPassword
-          ports:
-            - name: socket
-              containerPort: 65432
-              protocol: TCP
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
         - name: {{ .Chart.Name }}
           securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}-agent
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          commands: ["watcher", "run-watcher"]
           envFrom:
             - configMapRef:
                 name: foundation-watcher
@@ -68,8 +61,8 @@ spec:
                   name: postgres
                   key: superUserPassword
           ports:
-            - name: http
-              containerPort: 80
+            - name: socket
+              containerPort: 65432
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
