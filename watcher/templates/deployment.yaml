@@ -28,7 +28,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}-agent
+        - name: {{ .Chart.Name }}-worker
           command: ["watcher", "run-watcher"]
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
