@@ -117,7 +117,7 @@ hiveMetastore:
   ## @param hiveMetastore.ingress.tls [array] Custom ingress TLS configuration
   ingress:
     enabled: false
-    className: ""
+    className: "tailscale"
     annotations: {}
     # kubernetes.io/ingress.class: kong
     # kubernetes.io/tls-acme: "true"
@@ -209,17 +209,17 @@ addSchemaJob:
   ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   ## @param initJob.resources.limits [object] The resources limits for the container
   ## @param initJob.resources.requests [object] The requested resources for the container
-  resources:
+  # resources:
     ## Example:
     ## limits:
     ##    cpu: 2
     ##    memory: 2Gi
-    limits: {}
+  # limits: {}
     ## Examples:
     ## requests:
     ##    cpu: 1
     ##    memory: 1Gi
-    requests: {}
+  # requests: {}
 
 ## @section Hive Metastore PostgreSQL parameters
 ##
@@ -234,14 +234,14 @@ postgresql:
   ## Authentication parameters
   auth:
     ## @param username Name for a custom user to create
-    username: "hive""
+    username: "hive"
     ## @param password Password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
     password: ""
     ## @param database Name for a custom database to create
     database: "hive"
     ## @param auth.existingSecret Name of existing secret to use for PostgreSQL credentials. `auth.postgresPassword`, `auth.password`, and `auth.replicationPassword` will be ignored and picked up from this secret
     ##
-    existingSecret: "postgres""
+    existingSecret: "postgres"
   ## @section PostgreSQL Primary parameters
   ##
   primary:
@@ -249,7 +249,7 @@ postgresql:
     ##
     persistence:
       ## @param primary.persistence.size PVC Storage Request for PostgreSQL volume
-      size: 50Gi
+      size: "50Gi"
 
 
 ## @section External Hive Metastore PostgreSQL configuration
