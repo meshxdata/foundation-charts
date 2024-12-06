@@ -54,7 +54,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: "{{ .Chart.Name }}-profiler"
           securityContext:
-            {{ - toYaml .Values.securityContext | nindent 12 }}
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: [ "foundation" ]
