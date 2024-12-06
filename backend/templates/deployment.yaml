@@ -64,6 +64,12 @@ spec:
                 name: foundation-backend
             - secretRef:
                 name: foundation-backend
+          env:
+            - name: MX_POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: superUserPassword
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
