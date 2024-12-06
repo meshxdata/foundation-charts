@@ -15,7 +15,7 @@ data:
   MX_KEYCLOAK_ENABLED: "false"
   MX_KEYCLOAK_HOST: "keycloak.keycloak.svc.cluster.local"
   MX_KEYCLOAK_REALM: "master"
-  MX_KAFKA_CLUSTER_HOST: "foundation-kafka-kafka-bootstrap:9092"
+  MX_KAFKA_CLUSTER_HOST: "foundation-kafka-kafka-bootstrap.foundation.svc.cluster.local:9092"
   MX_LOGGING_LEVEL: "DEBUG"
   MX_POSTGRES_DATABASE: "{{ .Values.config.postgres.database }}"
   MX_POSTGRES_HOST: "{{ .Values.config.postgres.host }}"
