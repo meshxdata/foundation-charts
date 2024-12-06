@@ -29,7 +29,7 @@ data:
   MX_SECRET_KEY: "secret"
   MX_TIMING_LOG_LEVEL: "DEBUG"
   MX_TRINO_HOST: "trino.foundation.svc.cluster.local"
-  MX_TRINO_PORT: "80"
+  MX_TRINO_PORT: "8080"
   MX_WATCHER_HOST: "watcher.foundation.svc.cluster.local"
   MX_WATCHER_PORT: "65432"
   MX_PORT_BIND: "{{ .Values.config.port }}"
