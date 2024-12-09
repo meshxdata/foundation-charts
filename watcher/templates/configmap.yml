@@ -19,4 +19,4 @@ data:
   MX_EXTERNAL_HOST: "localhost"
   MX_API_PREFIX: "/api"
   MX_LOGGING_LEVEL: "DEBUG"
-  
+  MX_GLOBAL_SECRET_NAME: "{{ .Values.config.global.secret_name }}"
