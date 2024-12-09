@@ -25,6 +25,8 @@ config:
   kafka:
     cluster_host: "foundation-kafka-kafka-bootstrap.foundation.svc.cluster.local:9092"
     topic: "_foundation_events"
+  global:
+    secret_name: "00000000-0000-0000-0000-000000000001-secret"
 
 imagePullSecrets: []
 nameOverride: ""
