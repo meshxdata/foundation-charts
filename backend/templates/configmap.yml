@@ -6,7 +6,7 @@ data:
   MX_API_PREFIX: "/api"
   MX_DEBUG: "true"
   MX_ENV: "development"
-  MX_EVENTS_KAFKA_TOPIC: "events"
+  MX_EVENTS_KAFKA_TOPIC: "_fndtn_events"
   MX_EXTERNAL_HOST: "backend.foundation.svc.cluster.local"
   MX_HOST_BIND: "{{ .Values.config.host }}"
   MX_IDENTIFIER: "backend"
