@@ -23,12 +23,12 @@ config:
     cluster_host: "foundation-kafka-kafka-bootstrap.foundation.svc.cluster.local:9092"
 
   events:
-    openlineage_spark_topic: "_foundation_product_metadata"
-    foundation_events_topic: "_foundation_events"
-    foundation_profiling_topic: "_foundation_profiling"
-    foundation_validations_topic: "_foundation_validations"
-    foundation_classification_topic: "_foundation_classification"
-    foundation_notifications_topic: "_foundation_notifications"
+    openlineage_spark_topic: "_fndtn_product_metadata"
+    foundation_events_topic: "_fndtn_events"
+    foundation_profiling_topic: "_fndtn_profiling"
+    foundation_validations_topic: "_fndtn_validations"
+    foundation_classification_topic: "_fndtn_classification"
+    foundation_notifications_topic: "_fndtn_notifications"
 
 image:
   repository: 061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/processor

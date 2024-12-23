@@ -52,6 +52,24 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        - name: "{{ .Chart.Name }}-profiler"
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: [ "foundation" ]
+          args: [ "service", "run-profiler" ]
+          envFrom:
+            - configMapRef:
+                name: foundation-backend
+            - secretRef:
+                name: foundation-backend
+          env:
+            - name: MX_POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres
+                  key: superUserPassword
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
