@@ -1,0 +1,14 @@
+kind: pipeline
+name: deploy
+
+steps:
+- name: deploy
+  image: pelotech/drone-helm3
+  settings:
+    helm_command: upgrade
+    chart: ./frontend
+    release: frontend
+    api_server:
+      from_secret: k8s_server
+    kubernetes_token:
+      from_secret: k8s_token
