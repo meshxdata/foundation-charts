@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-10T15:21:26.727246341Z"
+    created: "2025-01-11T09:02:17.040689873Z"
     description: A Helm chart for Kubernetes
-    digest: 62de2bfb810de4d275900cc94988f2a39a5f293c8246f99a9198b300a71027d8
+    digest: 90990e4ac6d21b5a191271b3fd0294ec1bdb7ab952428bbdd7d6d7161fae27d2
     name: backend
     type: application
     urls:
@@ -14,14 +14,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-10T15:21:26.733589759Z"
+    created: "2025-01-11T09:02:17.046932472Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: 400f5bf9e11daeba160ae65f8318482f5048c9b716ae1fa2131ad2a9930f9efd
+    digest: de7f59b939c0948391e830d25f295405a257e1459e8858b4f0e6c7e1ff7e2a19
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -37,9 +37,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-10T15:21:26.734025621Z"
+    created: "2025-01-11T09:02:17.047350171Z"
     description: A Helm chart for the Foundation Processor
-    digest: 98c53a6f573756013946e20c4f2603e2fd27d9e74eac4565d4213a1e5422857d
+    digest: bd72796074da6934c13a42050af8d7c617925f128c99e92f42a81107158c8c80
     name: processor
     type: application
     urls:
@@ -47,12 +47,12 @@ entries:
     version: 0.1.0
   watcher:
   - apiVersion: v2
-    created: "2025-01-10T15:21:26.734455442Z"
+    created: "2025-01-11T09:02:17.04776815Z"
     description: A Helm chart for the Foundation Watcher
-    digest: 335ed817f7d075259985dbd48dd065385b6cd462f33d1db26ad9c67ac7a37625
+    digest: 1cbfe24c94cf0a3bf874ac5195657fff8fe1a7eecfd1101639e17a096eb4ec62
     name: watcher
     type: application
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-10T15:21:26.726264112Z"
+generated: "2025-01-11T09:02:17.040043017Z"
