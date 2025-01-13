@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-13T14:53:04.627039829Z"
+    created: "2025-01-13T15:18:17.810206973Z"
     description: A Helm chart for Kubernetes
-    digest: 6968b49305c56d3b9c73407e5f5ccea1b3c003e9850b2895522eee3125411706
+    digest: 91cdbc5a7bade107587db2a616ac3a96f13fea4231256aede615e07f36bd9ead
     name: backend
     type: application
     urls:
@@ -14,7 +14,17 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-13T14:53:04.62793508Z"
+    created: "2025-01-13T15:18:17.812139638Z"
+    description: A Helm chart for Kubernetes
+    digest: 16f4519855379c00ecb77d73ec10ac1fa28ac1b2d91638e3cdb55f08e1c0f6c5
+    name: frontend
+    type: application
+    urls:
+    - frontend-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-01-13T15:18:17.811694971Z"
     description: A Helm chart for Kubernetes
     digest: 634b8af6fdf72603349e4e7591da7b9c80a42fc54610792d4307fd4792bb394d
     name: frontend
@@ -24,7 +34,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-13T14:53:04.627485501Z"
+    created: "2025-01-13T15:18:17.811246647Z"
     description: A Helm chart for Kubernetes
     digest: 7d188bda90477783782de6aa74e868ffa3f508918de3b1bdf520e126fca3e4de
     name: frontend
@@ -35,14 +45,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-13T14:53:04.634302989Z"
+    created: "2025-01-13T15:18:17.817578736Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: de155d3524aaacdabe95f3a4cec715aae9fcf711839103abf463ed2e8cbade05
+    digest: c731e046a57aecc783c250b5d366eba7a100b3346cf84238d27b65dfc025b2b1
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -58,9 +68,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-13T14:53:04.634696494Z"
+    created: "2025-01-13T15:18:17.817964193Z"
     description: A Helm chart for the Foundation Processor
-    digest: 4f7ccf3b4e39a29cf91e097f67974dfcf59d6c8e0a9f6a756f04352166770261
+    digest: c7d805063199492d3625ce262380954120e8fc6e5ec1fd185e0ef7e7a665fb97
     name: processor
     type: application
     urls:
@@ -68,12 +78,12 @@ entries:
     version: 0.1.0
   watcher:
   - apiVersion: v2
-    created: "2025-01-13T14:53:04.635119133Z"
+    created: "2025-01-13T15:18:17.819044844Z"
     description: A Helm chart for the Foundation Watcher
-    digest: 8881f8a8f721a1ea9a4a7b01028d560aa6b021ed6d27fbfe89291146b4750a45
+    digest: a32e89426427fb3b754cc36f6deeecd6b82a68220029287a9a1d045279aa54a0
     name: watcher
     type: application
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-13T14:53:04.626429088Z"
+generated: "2025-01-13T15:18:17.809346983Z"
