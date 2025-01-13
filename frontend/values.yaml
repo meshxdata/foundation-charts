@@ -126,3 +126,4 @@ affinity: {}
 
 env:
   host: "0.0.0.0"
+  api_url: "https://api.meshx.dev"

@@ -52,6 +52,8 @@ spec:
           env:
             - name: HOST
               value: {{ .Values.env.host }}
+            - name: API_URL
+              value: {{ .Values.env.api_url }}
           {{- end }}
       {{- with .Values.volumes }}
       volumes:
