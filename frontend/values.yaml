@@ -125,5 +125,4 @@ tolerations: []
 affinity: {}
 
 env:
-  API_URL: "https://api.mahi-tortoise.ts.net"
-  HOST: "0.0.0.0"
+  host: "0.0.0.0"

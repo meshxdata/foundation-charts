@@ -51,7 +51,7 @@ spec:
             {{- toYaml . | nindent 12 }}
           env:
             - name: HOST
-              value: {{ $.Values.service.port }}
+              value: {{ .Values.env.host }}
           {{- end }}
       {{- with .Values.volumes }}
       volumes:
