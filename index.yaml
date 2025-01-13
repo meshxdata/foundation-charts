@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-13T10:33:33.66172251Z"
+    created: "2025-01-13T14:24:09.099183279Z"
     description: A Helm chart for Kubernetes
-    digest: 50a82eaeb75cfc39de345f50156c8b0a1ab3467d42312f114fb807b80bdfdf7f
+    digest: 5dd53ab062232b59e2cc3a847200779b36137a303a44ab05c423b98054bbd7c1
     name: backend
     type: application
     urls:
@@ -14,7 +14,7 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-13T10:33:33.662209426Z"
+    created: "2025-01-13T14:24:09.099900011Z"
     description: A Helm chart for Kubernetes
     digest: 90ff977531386df11549b79ccc2e986fe488a63bd36729852b5e921af9c214c3
     name: frontend
@@ -25,14 +25,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-13T10:33:33.667647664Z"
+    created: "2025-01-13T14:24:09.105394696Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: cb98eb2a664532db512b5f08d013f6d5f0d4e66d5be3bf598afa97a0fde1ae08
+    digest: 154cc4e53f3d5f10411fe9185e5516ad31f71d726ba589e66522d672b4732922
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -48,9 +48,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-13T10:33:33.668038802Z"
+    created: "2025-01-13T14:24:09.105833297Z"
     description: A Helm chart for the Foundation Processor
-    digest: b306ac4fb7acc88542f5a41354bb0e135fb146c7940c635f78c773d2f9a31672
+    digest: 1969407b4953c91ea3870ed1e7ef1f219dee82b925d822bbd56ba5243da734af
     name: processor
     type: application
     urls:
@@ -58,12 +58,12 @@ entries:
     version: 0.1.0
   watcher:
   - apiVersion: v2
-    created: "2025-01-13T10:33:33.668992987Z"
+    created: "2025-01-13T14:24:09.106256179Z"
     description: A Helm chart for the Foundation Watcher
-    digest: 31599d2586fe499bb935f98a4402d40237c847e6abc9f0de5f44cc01f03dd8e8
+    digest: 41cd0e23f6e51bd1fe966f9016ad1bbc13b295354d7df57cd234b6a8b7910d84
     name: watcher
     type: application
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-13T10:33:33.660150645Z"
+generated: "2025-01-13T14:24:09.097905938Z"
