@@ -51,11 +51,15 @@ spec:
               containerPort: 9000
               protocol: TCP
           livenessProbe:
-            httpGet: /api/iam/login
+            httpGet: 
+              path: /api/iam/login
+              port: 9000
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
-            httpGet: /api/iam/login
+            httpGet: 
+              path: /api/iam/login
+              port: 9000
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
