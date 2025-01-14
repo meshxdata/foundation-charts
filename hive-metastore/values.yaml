@@ -226,11 +226,13 @@ addSchemaJob:
 ## PostgreSQL chart configuration
 ## ref: https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml
 ## 
+
 postgresql:
   enabled: false
   global:
     storageClass: "gp2"
-
+  secretName: "postgres"
+  userPasswordKey: "password"
   ## Authentication parameters
   auth:
     ## @param username Name for a custom user to create

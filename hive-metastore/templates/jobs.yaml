@@ -39,8 +39,8 @@ spec:
           - name: HIVE_METASTORE_DATABASE_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{ include "hive-metastore.postgresql.secretName" . }}
-                key: {{ include "hive-metastore.postgresql.userPasswordKey" . }}
+                name: {{ .Values.postgresql.secretName }}
+                key: {{ .Values.postgresql.userPasswordKey }}
         volumeMounts:
           - name: hive-metastore-config
             mountPath: /opt/hive-metastore/metastore-site.xml
