@@ -2,5 +2,5 @@ apiVersion: v2
 name: watcher
 description: A Helm chart for the Foundation Watcher
 type: application
-version: 0.1.0
-version: 0.1.0
+version: 0.1.1
+appversion: 0.1.0
