@@ -45,6 +45,8 @@ spec:
               secretKeyRef:
                   name: postgres
                   key: superUserPassword
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
