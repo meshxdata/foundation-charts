@@ -50,6 +50,14 @@ spec:
             - name: http
               containerPort: 9000
               protocol: TCP
+          livenessProbe:
+            httpGet: /api/iam/login
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet: /api/iam/login
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: "{{ .Chart.Name }}-profiler"
