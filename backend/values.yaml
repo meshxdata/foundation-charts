@@ -28,8 +28,8 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  fsGroup: 2000
 
 securityContext:
   capabilities:
@@ -55,13 +55,14 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
 
-resources: 
+resources:
   limits:
-     cpu: 500m
-     memory: 512Mi
+    cpu: 500m
+    memory: 256Mi
   requests:
-     cpu: 500m
-     memory: 512Mi
+    cpu: 100m
+    memory: 128Mi
+
 
 autoscaling:
   enabled: true
