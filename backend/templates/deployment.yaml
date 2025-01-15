@@ -51,8 +51,7 @@ spec:
               containerPort: 9000
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /.well-known/status
+            tcpSocket: 
               port: 9000
             initialDelaySeconds: 5
             periodSeconds: 10
