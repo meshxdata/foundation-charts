@@ -56,7 +56,8 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
-            tcpSocket: 
+            httpGet:
+              path: /api/.well-known/status 
               port: 9000
             initialDelaySeconds: 5
             periodSeconds: 10
