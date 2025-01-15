@@ -231,10 +231,10 @@ postgresql:
   enabled: false
   global:
     storageClass: "gp2"
-  secretName: "postgres"
   ## Authentication parameters
   auth:
     userPasswordKey: "password"
+    secretName: "postgres"
     secretKeys:
       password: "password"
     ## @param username Name for a custom user to create
