@@ -1,21 +1,9 @@
-# Default values for hive-metastore.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-
-## @section Common Parameters
-
-##  nameOverride -- String to partially override hive-metastore.fullname template with a string (will prepend the release name)
-##
 nameOverride: ""
 
 ##  fullnameOverride -- String to fully override hive-metastore.fullname template with a string
 ##
 fullnameOverride: ""
 
-## Service account for Hive Metastore to use.
-## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
-##
 serviceAccount:
   ## @param serviceAccount.create Enable creation of ServiceAccount for Hive Metastore pod
   ##
@@ -40,15 +28,8 @@ istio:
 ## @section Hive Metastore Parameters
 
 hiveMetastore:
-  ## @param hiveMetastore.replicaCount Number of Hive Metastore replicas
-  ##
-  ## Following the documentation, given Hive Metastore is stateless we could have more than one instance.
-  ## https://cwiki.apache.org/confluence/display/Hive/AdminManual+Metastore+Administration
   replicaCount: 1
 
-  ##  image.repository The repository to use for the Hive Metastore image.
-  ##  image.pullPolicy the pull policy to use for the Hive Metastore image
-  ##  image.tag The Hive Metastore image tag. Defaults to the chart's AppVersion
   image:
     repository: "061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/hive-metastore"
     pullPolicy: IfNotPresent
@@ -62,36 +43,23 @@ hiveMetastore:
   ##
   podLabels: {}
 
-  ## @param hiveMetastore.containerSecurityContext Security context for the container
-  ## Examples:
-  ## podSecurityContext:
-  ##    runAsNonRoot: true
-  ##    runAsUser: 1000
-  ##    readOnlyRootFilesystem: true
   podSecurityContext:
     runAsNonRoot: true
     runAsUser: 10001
 
-  ## @param hiveMetastore.service.type The service type to use for the Hive Metastore
-  ## @param hiveMetastore.service.port The service port to expose the Hive Metastore
+
   service:
     type: ClusterIP
     port: 9083
 
-
-  ## @param hiveMetastore.resources.limits [object] The resources limits for the pod
-  ## @param hiveMetastore.resources.requests [object] The requested resources for the pod
   resources:
-    ## Example:
-    ## limits:
-    ##    cpu: 2
-    ##    memory: 2Gi
-    limits: {}
-    ## Examples:
-    ## requests:
-    ##    cpu: 1
-    ##    memory: 1Gi
-    requests: {}
+    limits:
+      cpu: 500
+      memory: 512Mi
+    requests:
+      cpu: 80
+      memory: 256Mi
+    
 
   ## @param hiveMetastore.nodeSelector [object] Node labels for pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
@@ -108,13 +76,6 @@ hiveMetastore:
   ##
   affinity: {}
 
-  ## Configure the ingress resource that allows you to access the Hive Metastore installation.
-  ## ref: http://kubernetes.io/docs/user-guide/ingress/
-  ## @param hiveMetastore.ingress.enabled Set to true to enable ingress record generation
-  ## @param hiveMetastore.ingress.className Specifies ingressClassName for clusters >= 1.18+
-  ## @param hiveMetastore.ingress.annotations [object] Ingress annotations done as key:value pairs
-  ## @param hiveMetastore.ingress.hosts The list of hostnames to be covered with this ingress record.
-  ## @param hiveMetastore.ingress.tls [array] Custom ingress TLS configuration
   ingress:
     enabled: false
     className: "tailscale"
@@ -144,19 +105,7 @@ hiveMetastore:
   extraEnv: []
   # - name: METASTORE_DB_HOSTNAME
   #   value: localhost
-  
-  ## @param hiveMetastore.configProperties YAML sequence of mappings with two keys "name" and "value" representing 
-  ## hive metastore configuration properties, that would be rendered into metastore-site.xml as follows
-  ##
-  ## <property>
-  ##   <name>$name</name>
-  ##   <value>$value</value>
-  ## </property>  
-  ##
-  ## example
-  ##
-  ## - name: "hive.metastore.schema.verification"
-  ##   value: "true"
+
   configProperties:
     - name: "hive.metastore.schema.verification"
       value: "true"
@@ -233,16 +182,6 @@ postgresql:
       size: "50Gi"
 
 
-## @section External Hive Metastore PostgreSQL configuration
-## 
-## All of these values are only used when postgresql.enabled is set to false
-## @param externalDatabase.host Database host
-## @param externalDatabase.username non-root Username for Hive Metastore Database
-## @param externalDatabase.password Database password
-## @param externalDatabase.existingSecret Name of an existing secret resource containing the DB password. Secret key MUST be `password`
-## @param externalDatabase.database Database name
-## @param externalDatabase.port Database port number
-##
 externalDatabase:
   host: foundation-postgres
   username: "hive"
@@ -251,15 +190,6 @@ externalDatabase:
   database: "hive"
   port: 5432
 
-
-## @section Object Store configuration
-## 
-## @param objectStore.minio.endpoint URL of object store API. Defaults to cluster MinIO deployment
-## @param objectStore.minio.accessKey Access key for the object store
-## @param objectStore.minio.secretKey Secret key for the object store 
-## @param objectStore.minio.existingSecret Name of existing secret to use for Minio credentials. `objectStore.minio.accessKey`and `objectStore.minio.secretKey` will be ignored and picked up from this secret
-## @param objectStore.minio.existingSecretAccessKey Name of existing secret key containing object store accessKey. Defaults to CONSOLE_ACCESS_KEY
-## @param objectStore.minio.existingSecretSecretKey Name of existing secret key containing object store secretKey. Defaults to CONSOLE_SECRET_KEY
 objectStore:
   minio:
     endpoint: "https://minio.foundation.svc.cluster.local"
