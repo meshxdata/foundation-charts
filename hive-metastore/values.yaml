@@ -173,15 +173,7 @@ initDatabaseJob:
   ## @param initJob.podAnnotations [object] Add extra annotations to the init job pod(s)
   ##
   podAnnotations: {}
-    
-  ## Init Job resource requests and limits
-  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
-  ## We usually recommend not to specify default resources and to leave this as a conscious
-  ## choice for the user. This also increases chances charts run on environments with little
-  ## resources, such as Minikube. If you do want to specify resources, uncomment the following
-  ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  ## @param initJob.resources.limits [object] The resources limits for the container
-  ## @param initJob.resources.requests [object] The requested resources for the container
+
   resources:
     ## Example:
     ## limits:
@@ -197,18 +189,9 @@ initDatabaseJob:
 # @ Section initDatabaseJob parameters
 addSchemaJob:
   enabled: true
-  ## @param initJob.podAnnotations [object] Add extra annotations to the init job pod(s)
-  ##
+
   podAnnotations: {}
-    
-  ## Init Job resource requests and limits
-  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
-  ## We usually recommend not to specify default resources and to leave this as a conscious
-  ## choice for the user. This also increases chances charts run on environments with little
-  ## resources, such as Minikube. If you do want to specify resources, uncomment the following
-  ## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  ## @param initJob.resources.limits [object] The resources limits for the container
-  ## @param initJob.resources.requests [object] The requested resources for the container
+
   # resources:
     ## Example:
     ## limits:
@@ -220,12 +203,6 @@ addSchemaJob:
     ##    cpu: 1
     ##    memory: 1Gi
   # requests: {}
-
-## @section Hive Metastore PostgreSQL parameters
-##
-## PostgreSQL chart configuration
-## ref: https://github.com/bitnami/charts/blob/master/bitnami/postgresql/values.yaml
-## 
 
 postgresql:
   enabled: false
