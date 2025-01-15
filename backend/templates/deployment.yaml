@@ -51,16 +51,9 @@ spec:
               containerPort: 9000
               protocol: TCP
           livenessProbe:
-            tcpSocket: 
-              port: 9000
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
-            httpGet:
-              path: /api/.well-known/status 
-              port: 9000
-            initialDelaySeconds: 5
-            periodSeconds: 10
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: "{{ .Chart.Name }}-profiler"

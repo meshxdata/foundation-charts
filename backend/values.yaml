@@ -63,6 +63,13 @@ resources:
     cpu: 100m
     memory: 128Mi
 
+livenessProbe:
+  httpGet:
+    path: /api/.well-known/status
+    port: 3000
+readinessProbe:
+  tcpSocket:
+    port: 3000
 
 autoscaling:
   enabled: true
