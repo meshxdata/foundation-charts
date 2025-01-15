@@ -46,8 +46,8 @@ spec:
             - name: HIVE_METASTORE_DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "hive-metastore.postgresql.secretName" . }}
-                  key: {{ include "hive-metastore.postgresql.auth.userPasswordKey" . }}
+                  name: {{ .Values.postgresql.secretName }}
+                  key: {{ .Values.postgresql.auth.userPasswordKey }}
             - name: S3_MINIO_ENDPOINT
               value: {{ .Values.objectStore.minio.endpoint }}
             {{- if and .Values.objectStore.minio.existingSecret .Values.objectStore.minio.existingSecretAccessKey }}
