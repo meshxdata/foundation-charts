@@ -52,7 +52,7 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /api/iam/login 
+              path: /.well-known/status
               port: 9000
             initialDelaySeconds: 5
             periodSeconds: 10
