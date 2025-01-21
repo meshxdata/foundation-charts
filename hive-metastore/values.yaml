@@ -3,13 +3,9 @@ nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-
   create: true
-
   name: "hive-metastore"
-
   automountServiceAccountToken: true
-
   annotations: {}
 
 ## @section Istio
@@ -18,8 +14,6 @@ istio:
   enabled: false
 
 ## @section Hive Metastore Parameters
-
-imagePullSecrets: []
 
 hiveMetastore:
   replicaCount: 1
