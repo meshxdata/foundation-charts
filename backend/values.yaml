@@ -66,12 +66,12 @@ resources:
 livenessProbe:
   httpGet:
     path: /api/.well-known/status
-    port: 3000
+    port: 9000
     initialDelaySeconds: 10
     periodSeconds: 10
 readinessProbe:
   tcpSocket:
-    port: 3000
+    port: 9000
     initialDelaySeconds: 10
     periodSeconds: 10
 
