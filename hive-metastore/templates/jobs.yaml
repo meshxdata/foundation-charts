@@ -107,8 +107,6 @@ spec:
         resources:
           {{- toYaml .Values.addSchemaJob.resources | nindent 10 }}
       {{- if .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
       {{- end }}
       volumes:
         - name: add-schema
