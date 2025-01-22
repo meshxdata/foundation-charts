@@ -1,5 +1,8 @@
 replicaCount: 1
 
+labels:
+  app: foundation-api
+
 development:
   enabled: false
 
