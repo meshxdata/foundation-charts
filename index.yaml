@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.396955366Z"
+    created: "2025-01-23T17:50:58.721800645Z"
     description: A Helm chart for Kubernetes
-    digest: c13e3c66b476b57c99238cee58faea8cfcb736b90f067a324daca6a213726efa
+    digest: b4f4bfd6ba65a3ade385d9ee66b97acadeb1668644282dd1b864b29bc6cc0440
     name: backend
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.396263584Z"
+    created: "2025-01-23T17:50:58.721145258Z"
     description: A Helm chart for Kubernetes
     digest: 8f49c93c874c1983d152600c59d86752aafbb0a8a3369f40b2c812e9000c2341
     name: backend
@@ -23,7 +23,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.395816313Z"
+    created: "2025-01-23T17:50:58.720695596Z"
     description: A Helm chart for Kubernetes
     digest: bef24323257ef8167b8d7db2f40ae6a018b0936e41f483c117d352bce8e582fe
     name: backend
@@ -33,7 +33,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.395340177Z"
+    created: "2025-01-23T17:50:58.720226918Z"
     description: A Helm chart for Kubernetes
     digest: 671c863f96a43a2a13d5288418761f8829ca0a9ee184f715fb7e704d4c6a0fff
     name: backend
@@ -43,7 +43,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.394921329Z"
+    created: "2025-01-23T17:50:58.719784039Z"
     description: A Helm chart for Kubernetes
     digest: 2aeaf524e27c5b044cf090fd35ecc16653963b1f9f0a6f2dbd3e97d2b660baa2
     name: backend
@@ -53,7 +53,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.394485178Z"
+    created: "2025-01-23T17:50:58.719321542Z"
     description: A Helm chart for Kubernetes
     digest: e17bbe319f0bde62b5591e4ad01e3c957a9f425232bb293fa1bbb72d7c05382d
     name: backend
@@ -63,7 +63,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.393984386Z"
+    created: "2025-01-23T17:50:58.71885568Z"
     description: A Helm chart for Kubernetes
     digest: 741324becd21e3c1304f3d711e525e681cfd10ed277c958b2709a7294b6750e5
     name: backend
@@ -73,7 +73,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.393531684Z"
+    created: "2025-01-23T17:50:58.718099764Z"
     description: A Helm chart for Kubernetes
     digest: 69c9fe5234b77833474ff84d08c2d5e8b1f655010a838c381e5b44d95044a5c9
     name: backend
@@ -83,7 +83,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.393055809Z"
+    created: "2025-01-23T17:50:58.716924774Z"
     description: A Helm chart for Kubernetes
     digest: 8e716df4b476d017b0cbe8a1e54a612c7df2e993a90e362175c26b69031502df
     name: backend
@@ -93,7 +93,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.392357029Z"
+    created: "2025-01-23T17:50:58.716450145Z"
     description: A Helm chart for Kubernetes
     digest: 362ee958382d83ec973b183119dd01076f068b59a87a98f7a4d8532f291e00c8
     name: backend
@@ -104,9 +104,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-23T17:50:06.398283645Z"
+    created: "2025-01-23T17:50:58.723100209Z"
     description: A Helm chart for Kubernetes
-    digest: 515f3bb2fc2b0424fa00025ff6d1ce5d1a0c38522eeb19af735e6535a72429c1
+    digest: 598c0b6d7f6e628282026067821199f06d6156dbecef5f6a7e825464797bccc6
     name: frontend
     type: application
     urls:
@@ -114,7 +114,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-23T17:50:06.397847605Z"
+    created: "2025-01-23T17:50:58.72267331Z"
     description: A Helm chart for Kubernetes
     digest: 634b8af6fdf72603349e4e7591da7b9c80a42fc54610792d4307fd4792bb394d
     name: frontend
@@ -124,7 +124,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-23T17:50:06.397383161Z"
+    created: "2025-01-23T17:50:58.722234448Z"
     description: A Helm chart for Kubernetes
     digest: 7d188bda90477783782de6aa74e868ffa3f508918de3b1bdf520e126fca3e4de
     name: frontend
@@ -135,14 +135,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-23T17:50:06.422527647Z"
+    created: "2025-01-23T17:50:58.747345485Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: 46e638249ee553840edb9549200d6d83f579373d4d87e6a8c0ef28bac8ebb959
+    digest: 1e909f8af6f97b5b69d86a45bce05ff765434e270eba7d9649ab9a5758cca92a
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -157,7 +157,7 @@ entries:
     version: 1.1.5
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-23T17:50:06.416675932Z"
+    created: "2025-01-23T17:50:58.740662349Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -179,7 +179,7 @@ entries:
     version: 1.1.4
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-23T17:50:06.411533366Z"
+    created: "2025-01-23T17:50:58.734534473Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -201,7 +201,7 @@ entries:
     version: 1.1.3
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-23T17:50:06.404790783Z"
+    created: "2025-01-23T17:50:58.729286755Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -224,9 +224,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-23T17:50:06.423365653Z"
+    created: "2025-01-23T17:50:58.748444194Z"
     description: A Helm chart for the Foundation Processor
-    digest: bfe59bff45780faaa31a3e61e20f9cf3368c60650dd08784daa3aae553beee9c
+    digest: 5730fe6249569b8ab602c239d0d8173079181e10b870889f2509d5d26cfa6c9e
     name: processor
     type: application
     urls:
@@ -234,7 +234,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-23T17:50:06.422960671Z"
+    created: "2025-01-23T17:50:58.748026121Z"
     description: A Helm chart for the Foundation Processor
     digest: a208c9e2843a06fed19f3b23e789e0aa40a75a0d375ce53021823561685bfd01
     name: processor
@@ -245,9 +245,9 @@ entries:
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-23T17:50:06.424671149Z"
+    created: "2025-01-23T17:50:58.749848584Z"
     description: A Helm chart for the Foundation Watcher
-    digest: be71e7324967d8d11293afa2b244b8a16d3d653fc2ff165a4b845a3fb18ba3b3
+    digest: 73fb97cdf6d5274b8a4fe1f4118ebb44397b31c1f38a58dc2ac3355e33b29f90
     name: watcher
     type: application
     urls:
@@ -255,7 +255,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-23T17:50:06.424244527Z"
+    created: "2025-01-23T17:50:58.749363686Z"
     description: A Helm chart for the Foundation Watcher
     digest: 37be5a4bd7117aec909935dd085ddeff379a97b389ecb9b296408c4f76fa625a
     name: watcher
@@ -264,7 +264,7 @@ entries:
     - watcher-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v2
-    created: "2025-01-23T17:50:06.423833443Z"
+    created: "2025-01-23T17:50:58.748904235Z"
     description: A Helm chart for the Foundation Watcher
     digest: b8d71da344c8250c5ecb6dbe65240bd0dd80c747d1426dfe1dd4f044a252b65c
     name: watcher
@@ -272,4 +272,4 @@ entries:
     urls:
     - watcher-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-23T17:50:06.391133026Z"
+generated: "2025-01-23T17:50:58.715820736Z"
