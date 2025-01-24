@@ -75,7 +75,7 @@ livenessProbe:
 readinessProbe:
   tcpSocket:
     port: 9000
-    initialDelaySeconds: 10
+    initialDelaySeconds: 20
     periodSeconds: 10
 
 
