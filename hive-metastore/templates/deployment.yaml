@@ -18,6 +18,10 @@ spec:
       labels:
         {{- include "hive-metastore.labels" . | nindent 8 }}
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- if or (.Values.serviceAccount.create) (.Values.serviceAccountName) }}
       serviceAccountName: {{ include "hive-metastore.serviceAccountName" . }}
       {{- end }}
