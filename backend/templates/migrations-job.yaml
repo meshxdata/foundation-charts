@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 spec:
-#  ttlSecondsAfterFinished: 120
-#  backoffLimit: 10
+  ttlSecondsAfterFinished: 120
+  backoffLimit: 10
   template:
     spec:
       {{- with .Values.imagePullSecrets }}
