@@ -22,9 +22,6 @@ spec:
             set -e
             pogo migrate-yoyo --skip-files;
             pogo apply -vvv;
-        {{- if .Values.istio.enabled }}
-          curl -fsI -X POST http://localhost:15020/quitquitquit
-        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         envFrom:
         - configMapRef:
