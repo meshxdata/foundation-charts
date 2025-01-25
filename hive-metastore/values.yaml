@@ -186,3 +186,15 @@ objectStore:
     existingSecret: ""
     existingSecretAccessKey: ""
     existingSecretSecretKey: ""
+
+
+livenessProbe:
+  tcpSocket:
+    port: 9083
+  initialDelaySeconds: 45
+  periodSeconds: 10
+readinessProbe:
+  tcpSocket:
+    port: 9083
+  initialDelaySeconds: 30
+  periodSeconds: 5

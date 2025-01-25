@@ -67,15 +67,16 @@ resources:
     memory: 128Mi
 
 livenessProbe:
+  initialDelaySeconds: 10
+
   httpGet:
     path: /api/.well-known/status
     port: 9000
-    initialDelaySeconds: 10
     periodSeconds: 10
 readinessProbe:
+  initialDelaySeconds: 60
   tcpSocket:
     port: 9000
-    initialDelaySeconds: 60
     periodSeconds: 10
 
 

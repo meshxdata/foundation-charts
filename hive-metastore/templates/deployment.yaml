@@ -105,15 +105,9 @@ spec:
               containerPort: 9083
               protocol: TCP
           livenessProbe:
-            tcpSocket:
-              port: 9083
-            initialDelaySeconds: 45
-            periodSeconds: 10
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
-            tcpSocket:
-              port: 9083
-            initialDelaySeconds: 30
-            periodSeconds: 5
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
           {{- toYaml .Values.hiveMetastore.resources | nindent 12 }}
           volumeMounts:
