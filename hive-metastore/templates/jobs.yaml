@@ -76,6 +76,9 @@ spec:
         {{- toYaml .Values.addSchemaJob.podAnnotations | nindent 8 }}
       {{- end }}
     spec:
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- if or (.Values.serviceAccount.create) (.Values.serviceAccountName) }}
       serviceAccountName: {{ include "hive-metastore.serviceAccountName" . }}
       {{- end }}
