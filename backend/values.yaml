@@ -68,7 +68,6 @@ resources:
 
 livenessProbe:
   initialDelaySeconds: 10
-
   httpGet:
     path: /api/.well-known/status
     port: 9000
@@ -79,7 +78,6 @@ readinessProbe:
     port: 9000
     periodSeconds: 10
 
-
 autoscaling:
   enabled: true
   minReplicas: 1
@@ -87,8 +85,16 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-istio:
-  enabled: false
+vpa:
+  enabled: true
+  updateMode: "Auto"
+  minAllowed:
+    cpu: "100m"
+    memory: "128Mi"
+  maxAllowed:
+    cpu: "800m"
+    memory: "1024Mi"
+  controlledValues: "RequestsAndLimits"
 
 nodeSelector: {}
 
