@@ -53,7 +53,7 @@ ingress:
     kubernetes.io/ingress.class: tailscale
     kubernetes.io/tls-acme: "true"
   hosts:
-    - host: www.wolf-anoles.ts.net
+    - host: api
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -95,6 +95,12 @@ vpa:
     cpu: "800m"
     memory: "1024Mi"
   controlledValues: "RequestsAndLimits"
+
+pdb:
+  enabled: true
+  maxUnavailable: 1
+  selector:
+    app: backend
 
 nodeSelector: {}
 
