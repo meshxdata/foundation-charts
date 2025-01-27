@@ -58,13 +58,7 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
 
-resources:
-  limits:
-    cpu: 500m
-    memory: 256Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
+resources: {}
 
 livenessProbe:
   initialDelaySeconds: 10
@@ -94,11 +88,10 @@ vpa:
   maxAllowed:
     cpu: "800m"
     memory: "1024Mi"
-  controlledValues: "RequestsAndLimits"
 
 pdb:
   enabled: true
-  maxUnavailable: 1
+  maxUnavailable: "50%"
   selector:
     app: backend
 
