@@ -80,7 +80,7 @@ autoscaling:
 
 vpa:
   enabled: false
-  updateMode: "Auto"
+  updateMode: "Initial"
   minAllowed:
     cpu: "100m"
     memory: "128Mi"
