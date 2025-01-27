@@ -87,7 +87,7 @@ vpa:
     memory: "128Mi"
   maxAllowed:
     cpu: "800m"
-    memory: "1024Mi"
+    memory: "512Mi"
 
 pdb:
   enabled: true
