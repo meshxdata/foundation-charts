@@ -3,7 +3,7 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-27T17:27:39.891651506Z"
+    created: "2025-01-27T21:46:00.164245+01:00"
     description: A Helm chart for Kubernetes
     digest: fb95e79d7ba42be22aeca38450c3e3bf33dc5adc1d3b548372db2d1143f94710
     name: backend
@@ -14,7 +14,7 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T17:27:39.892184253Z"
+    created: "2025-01-27T21:46:00.164501+01:00"
     description: A Helm chart for Kubernetes
     digest: f7f7cd228f7e1447f2e4b0a1bd237b91831e6459a3726e8859bfe80b5992f103
     name: frontend
@@ -25,7 +25,7 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-27T17:27:39.898524789Z"
+    created: "2025-01-27T21:46:00.168909+01:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -48,7 +48,7 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T17:27:39.898963551Z"
+    created: "2025-01-27T21:46:00.169126+01:00"
     description: A Helm chart for the Foundation Processor
     digest: 9680853bacbd8000c9f67c69eb10ce914e928732c3c8a51dfc551515ab553eaf
     name: processor
@@ -56,10 +56,59 @@ entries:
     urls:
     - processor-0.1.1.tgz
     version: 0.1.1
+  vertical-pod-autoscaler:
+  - annotations:
+      artifacthub.io/signKey: |
+        fingerprint: 9E57D2479D48B84463EF491F66D280CE667AD6C8
+        url: https://cowboysysop.github.io/charts/pgp-public-key-2022-02-19.asc
+      kubeVersion: '>=1.24'
+    apiVersion: v2
+    appVersion: 1.2.1
+    created: "2025-01-27T21:46:00.170557+01:00"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami/
+      version: 2.21.0
+    description: Set of components that automatically adjust the amount of CPU and
+      memory requested by pods running in the Kubernetes Cluster
+    digest: 4870c5156f91452a7893a9d244e0970eb29b412154653d14398198ec507c78f4
+    home: https://github.com/kubernetes/autoscaler
+    icon: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.svg
+    maintainers:
+    - email: sebastien.prudhomme@gmail.com
+      name: sebastien-prudhomme
+    name: vertical-pod-autoscaler
+    sources:
+    - https://github.com/kubernetes/autoscaler
+    - https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler
+    urls:
+    - vertical-pod-autoscaler-9.9.1.tgz
+    version: 9.9.1
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-01-27T21:46:00.169308+01:00"
+    description: A Helm chart for the Vertical Pod Autoscaler
+    digest: e1ecc25efa0eaa3cd614142bba386bbc48e813253866f801495f3bb185c428e6
+    name: vertical-pod-autoscaler
+    type: application
+    urls:
+    - vertical-pod-autoscaler-0.1.1.tgz
+    version: 0.1.1
+  vpa:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-01-27T21:46:00.170739+01:00"
+    description: A Helm chart for the Vertical Pod Autoscaler
+    digest: 6dd2625fd9ba56a535c8ebf0cd01e9a2fea6a10cc989b454f5f532ae3fc06e34
+    name: vpa
+    type: application
+    urls:
+    - vpa-0.1.1.tgz
+    version: 0.1.1
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T17:27:39.899420777Z"
+    created: "2025-01-27T21:46:00.170954+01:00"
     description: A Helm chart for the Foundation Watcher
     digest: fdcf31d366736a799d5cee15a43cad1a0cc3d29a5f087323d5f43477bd994ad2
     name: watcher
@@ -67,4 +116,4 @@ entries:
     urls:
     - watcher-0.1.2.tgz
     version: 0.1.2
-generated: "2025-01-27T17:27:39.891010265Z"
+generated: "2025-01-27T21:46:00.163641+01:00"
