@@ -49,14 +49,10 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
-    - host: www
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
+
   tls:
     - hosts:
         - ui
-        - www
 
 resources:
   limits:
@@ -82,17 +78,19 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
-volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
+vpa:
+  enabled: false
+  updateMode: "Auto"
+  minAllowed:
+    cpu: "100m"
+    memory: "128Mi"
+  maxAllowed:
+    cpu: "800m"
+    memory: "1024Mi"
 
-# Additional volumeMounts on the output Deployment definition.
+volumes: []
+
 volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
 
 nodeSelector: {}
 
