@@ -88,6 +88,12 @@ vpa:
     cpu: "800m"
     memory: "1024Mi"
 
+pdb:
+  enabled: true
+  maxUnavailable: 1
+  selector:
+    app: frontend
+
 volumes: []
 
 volumeMounts: []
