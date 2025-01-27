@@ -5,7 +5,7 @@ entries:
     appVersion: 1.16.0
     created: "2025-01-27T21:46:00.164245+01:00"
     description: A Helm chart for Kubernetes
-    digest: fb95e79d7ba42be22aeca38450c3e3bf33dc5adc1d3b548372db2d1143f94710
+    digest: 8e156e4ef02c359c9405650f11da85395784f9832015a3da714f4ec6a9c8c1a4
     name: backend
     type: application
     urls:
@@ -16,7 +16,7 @@ entries:
     appVersion: 0.1.0
     created: "2025-01-27T21:46:00.164501+01:00"
     description: A Helm chart for Kubernetes
-    digest: f7f7cd228f7e1447f2e4b0a1bd237b91831e6459a3726e8859bfe80b5992f103
+    digest: e8031ab8c2488dfd4bee2a4ff08205e5e610ad85a979117c5cf2d8b7788b4346
     name: frontend
     type: application
     urls:
@@ -32,7 +32,7 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: d04f1c49c139848d6753e4bac5387aef8b1231173c733e256066b6de809c4ea1
+    digest: a21dd0e277014b523bb5aa743869e914bae9952bbf2db4c82381762c20f91f7b
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -50,7 +50,7 @@ entries:
     appVersion: 0.1.0
     created: "2025-01-27T21:46:00.169126+01:00"
     description: A Helm chart for the Foundation Processor
-    digest: 9680853bacbd8000c9f67c69eb10ce914e928732c3c8a51dfc551515ab553eaf
+    digest: fe89870802fc8399a2199ee3e699e724e5f92a3bc18a266833681151594c3969
     name: processor
     type: application
     urls:
@@ -110,7 +110,7 @@ entries:
     appVersion: 0.1.0
     created: "2025-01-27T21:46:00.170954+01:00"
     description: A Helm chart for the Foundation Watcher
-    digest: fdcf31d366736a799d5cee15a43cad1a0cc3d29a5f087323d5f43477bd994ad2
+    digest: 05ed764e2e9f1bcb0c4be0af33e8e971254eea23e54884bae5e9e11bf6c3b43f
     name: watcher
     type: application
     urls:
