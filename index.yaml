@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-27T17:27:39.891651506Z"
+    created: "2025-01-27T20:18:03.049535339Z"
     description: A Helm chart for Kubernetes
-    digest: fb95e79d7ba42be22aeca38450c3e3bf33dc5adc1d3b548372db2d1143f94710
+    digest: 8e156e4ef02c359c9405650f11da85395784f9832015a3da714f4ec6a9c8c1a4
     name: backend
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T17:27:39.892184253Z"
+    created: "2025-01-27T20:18:03.050135995Z"
     description: A Helm chart for Kubernetes
-    digest: f7f7cd228f7e1447f2e4b0a1bd237b91831e6459a3726e8859bfe80b5992f103
+    digest: e8031ab8c2488dfd4bee2a4ff08205e5e610ad85a979117c5cf2d8b7788b4346
     name: frontend
     type: application
     urls:
@@ -25,14 +25,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-27T17:27:39.898524789Z"
+    created: "2025-01-27T20:18:03.055554746Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: d04f1c49c139848d6753e4bac5387aef8b1231173c733e256066b6de809c4ea1
+    digest: a21dd0e277014b523bb5aa743869e914bae9952bbf2db4c82381762c20f91f7b
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -48,23 +48,51 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T17:27:39.898963551Z"
+    created: "2025-01-27T20:18:03.056018506Z"
     description: A Helm chart for the Foundation Processor
-    digest: 9680853bacbd8000c9f67c69eb10ce914e928732c3c8a51dfc551515ab553eaf
+    digest: fe89870802fc8399a2199ee3e699e724e5f92a3bc18a266833681151594c3969
     name: processor
     type: application
     urls:
     - processor-0.1.1.tgz
     version: 0.1.1
+  vertical-pod-autoscaler:
+  - annotations:
+      artifacthub.io/signKey: |
+        fingerprint: 9E57D2479D48B84463EF491F66D280CE667AD6C8
+        url: https://cowboysysop.github.io/charts/pgp-public-key-2022-02-19.asc
+      kubeVersion: '>=1.24'
+    apiVersion: v2
+    appVersion: 1.2.1
+    created: "2025-01-27T20:18:03.059460567Z"
+    dependencies:
+    - name: common
+      repository: https://charts.bitnami.com/bitnami/
+      version: 2.21.0
+    description: Set of components that automatically adjust the amount of CPU and
+      memory requested by pods running in the Kubernetes Cluster
+    digest: 4870c5156f91452a7893a9d244e0970eb29b412154653d14398198ec507c78f4
+    home: https://github.com/kubernetes/autoscaler
+    icon: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.svg
+    maintainers:
+    - email: sebastien.prudhomme@gmail.com
+      name: sebastien-prudhomme
+    name: vertical-pod-autoscaler
+    sources:
+    - https://github.com/kubernetes/autoscaler
+    - https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler
+    urls:
+    - vertical-pod-autoscaler-9.9.1.tgz
+    version: 9.9.1
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T17:27:39.899420777Z"
+    created: "2025-01-27T20:18:03.059997184Z"
     description: A Helm chart for the Foundation Watcher
-    digest: fdcf31d366736a799d5cee15a43cad1a0cc3d29a5f087323d5f43477bd994ad2
+    digest: 05ed764e2e9f1bcb0c4be0af33e8e971254eea23e54884bae5e9e11bf6c3b43f
     name: watcher
     type: application
     urls:
     - watcher-0.1.2.tgz
     version: 0.1.2
-generated: "2025-01-27T17:27:39.891010265Z"
+generated: "2025-01-27T20:18:03.048212654Z"
