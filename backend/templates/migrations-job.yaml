@@ -19,7 +19,7 @@ spec:
         command: ["bash", "-c"]
         args:
         - |
-            set -e
+            set -ex
             pogo migrate-yoyo --skip-files;
             pogo apply -vvv;
         imagePullPolicy: {{ .Values.image.pullPolicy }}

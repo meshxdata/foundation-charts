@@ -5,8 +5,8 @@ metadata:
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 spec:
-#  ttlSecondsAfterFinished: 120
-#  backoffLimit: 10
+  ttlSecondsAfterFinished: 120
+  backoffLimit: 10
   template:
     spec:
       {{- with .Values.imagePullSecrets }}
@@ -19,12 +19,9 @@ spec:
         command: ["bash", "-c"]
         args:
         - |
-            set -e
+            set -ex
             pogo migrate-yoyo --skip-files;
             pogo apply -vvv;
-        {{- if .Values.istio.enabled }}
-          curl -fsI -X POST http://localhost:15020/quitquitquit
-        {{- end }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         envFrom:
         - configMapRef:
