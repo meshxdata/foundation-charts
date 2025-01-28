@@ -1,13 +1,7 @@
-# Default values for frontend.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-# This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 replicaCount: 1
 
-# This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: 061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/frontend
+  repository: ""
   pullPolicy: Always
   tag: "latest"
 
@@ -24,8 +18,8 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  fsGroup: 2000
 
 securityContext:
   capabilities:
@@ -41,18 +35,12 @@ service:
 
 ingress:
   enabled: true
-  className: "tailscale"
+  className: ""
   annotations: {}
 
-  hosts:
-    - host: ui
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
+  hosts: []
 
-  tls:
-    - hosts:
-        - ui
+  tls: []
 
 resources:
   limits:
@@ -104,6 +92,4 @@ tolerations: []
 
 affinity: {}
 
-env:
-  host: "0.0.0.0"
-  api_url: "https://api.meshx.dev"
+env: {}
