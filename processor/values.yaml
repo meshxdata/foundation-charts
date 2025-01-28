@@ -11,27 +11,27 @@ config:
   host: 0.0.0.0
   port: 65433
   postgres:
-    host: foundation-postgres
+    host: ""
     port: 5432
-    database: processor
-    user: processor
+    database: "" 
+    user: ""
     pool_min_size: 1
     pool_max_size: 5
 
 
   kafka:
-    cluster_host: "foundation-kafka-kafka-bootstrap.foundation.svc.cluster.local:9092"
+    cluster_host: ""
 
   events:
-    openlineage_spark_topic: "_fndtn_product_metadata"
-    foundation_events_topic: "_fndtn_events"
-    foundation_profiling_topic: "_fndtn_profiling"
-    foundation_validations_topic: "_fndtn_validations"
-    foundation_classification_topic: "_fndtn_classification"
-    foundation_notifications_topic: "_fndtn_notifications"
+    openlineage_spark_topic: ""
+    foundation_events_topic: ""
+    foundation_profiling_topic: ""
+    foundation_validations_topic: ""
+    foundation_classification_topic: ""
+    foundation_notifications_topic: ""
 
 image:
-  repository: 061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/processor
+  repository: ""
   pullPolicy: Always
   tag: "latest"
 
