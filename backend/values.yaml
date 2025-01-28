@@ -7,18 +7,18 @@ development:
   enabled: false
 
 image:
-  repository: 061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/backend
+  repository: ""
   pullPolicy: Always
   tag: "latest"
 
 config:
-  host: 0.0.0.0
-  port: 9000
+  host: ""
+  port: ""
   postgres:
-    host: foundation-postgres
+    host:
     port: 5432
-    database: foundation
-    user: foundation
+    database:
+    user:
     pool_min_size: 1
     pool_max_size: 5
 
@@ -47,13 +47,13 @@ service:
   port: 80
 
 ingress:
-  enabled: true
-  className: "tailscale"
+  enabled: false
+  className: ""
   annotations:
-    kubernetes.io/ingress.class: tailscale
-    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: ""
+    kubernetes.io/tls-acme: "false"
   hosts:
-    - host: api
+    - host: ""
       paths:
         - path: /
           pathType: ImplementationSpecific
