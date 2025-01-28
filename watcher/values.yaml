@@ -3,7 +3,7 @@
 replicaCount: 1
 
 image:
-  repository: 061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/watcher
+  repository: ""
   pullPolicy: Always
   tag: "latest"
 
@@ -14,17 +14,17 @@ config:
   host: 0.0.0.0
   port: 65432
   postgres:
-    host: foundation-postgres
+    host: ""
     port: 5432
-    database: foundation
-    user: foundation
+    database: ""
+    user: ""
     pool_min_size: 1
     pool_max_size: 5
   kafka:
-    cluster_host: "foundation-kafka-kafka-bootstrap.foundation.svc.cluster.local:9092"
-    topic: "_fndtn_events"
+    cluster_host: ""
+    topic: ""
   global:
-    secret_name: "00000000-0000-0000-0000-000000000001-secret"
+    secret_name: ""
 
 imagePullSecrets: []
 nameOverride: ""
