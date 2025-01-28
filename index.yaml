@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-01-27T21:00:07.143579397Z"
+    created: "2025-01-28T10:34:03.820825695Z"
     description: A Helm chart for Kubernetes
-    digest: fe5f18860893c415968acd60a2677882317f6538bdd517e77e88b744859cc7c2
+    digest: 0ceb596a5c2226ef3408cad0a065b22f26aa0d805e3e65cfc4064db94af06467
     name: backend
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T21:00:07.144094002Z"
+    created: "2025-01-28T10:34:03.821406133Z"
     description: A Helm chart for Kubernetes
-    digest: 41080049078c6f3dd3114ab9d0322361201279463f21bfc6d79f7b504e38cfa9
+    digest: 4df5dec7df16d3cef8dbcea997f2c828f83730190e1d628cb354e3d0fe26240b
     name: frontend
     type: application
     urls:
@@ -25,14 +25,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-01-27T21:00:07.149512475Z"
+    created: "2025-01-28T10:34:03.827555055Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: 2bfb99c7afe64395532dd14c905d35873889543a5b5df8188d13c49766a1f90e
+    digest: 47a570d84979b52fcba8b8c2b1585af1d3349c0d031b0da88f2149d32ec16e3d
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -48,56 +48,18 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T21:00:07.14995294Z"
+    created: "2025-01-28T10:34:03.828014779Z"
     description: A Helm chart for the Foundation Processor
-    digest: e8d6c18e40f7cb3cff091418f63acf79a2462b83c2946530b4078c8a4b8b7808
+    digest: 90760cb950d1235455bdbfda12adb19c7b9f3bccdd677b3817ebc46875a4f650
     name: processor
     type: application
     urls:
     - processor-0.1.1.tgz
     version: 0.1.1
-  vertical-pod-autoscaler:
-  - annotations:
-      artifacthub.io/signKey: |
-        fingerprint: 9E57D2479D48B84463EF491F66D280CE667AD6C8
-        url: https://cowboysysop.github.io/charts/pgp-public-key-2022-02-19.asc
-      kubeVersion: '>=1.24'
-    apiVersion: v2
-    appVersion: 1.2.1
-    created: "2025-01-27T21:00:07.153464888Z"
-    dependencies:
-    - name: common
-      repository: https://charts.bitnami.com/bitnami/
-      version: 2.21.0
-    description: Set of components that automatically adjust the amount of CPU and
-      memory requested by pods running in the Kubernetes Cluster
-    digest: 4870c5156f91452a7893a9d244e0970eb29b412154653d14398198ec507c78f4
-    home: https://github.com/kubernetes/autoscaler
-    icon: https://raw.githubusercontent.com/kubernetes/kubernetes/master/logo/logo.svg
-    maintainers:
-    - email: sebastien.prudhomme@gmail.com
-      name: sebastien-prudhomme
-    name: vertical-pod-autoscaler
-    sources:
-    - https://github.com/kubernetes/autoscaler
-    - https://github.com/cowboysysop/charts/tree/master/charts/vertical-pod-autoscaler
-    urls:
-    - vertical-pod-autoscaler-9.9.1.tgz
-    version: 9.9.1
-  - apiVersion: v2
-    appVersion: 0.1.0
-    created: "2025-01-27T21:00:07.150720368Z"
-    description: A Helm chart for the Vertical Pod Autoscaler
-    digest: e1ecc25efa0eaa3cd614142bba386bbc48e813253866f801495f3bb185c428e6
-    name: vertical-pod-autoscaler
-    type: application
-    urls:
-    - vertical-pod-autoscaler-0.1.1.tgz
-    version: 0.1.1
   vpa:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T21:00:07.153811808Z"
+    created: "2025-01-28T10:34:03.828361915Z"
     description: A Helm chart for the Vertical Pod Autoscaler
     digest: 6dd2625fd9ba56a535c8ebf0cd01e9a2fea6a10cc989b454f5f532ae3fc06e34
     name: vpa
@@ -108,12 +70,12 @@ entries:
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-01-27T21:00:07.154279254Z"
+    created: "2025-01-28T10:34:03.828799538Z"
     description: A Helm chart for the Foundation Watcher
-    digest: 357487932ecdff3b0cf7f3daaf25bb0c2c38306996add4cb369ae7ba8360ee15
+    digest: f724b4d3debc24cb63b9abf75438fb67c31ca4386ff3bb91ff282c7166ec3c0c
     name: watcher
     type: application
     urls:
     - watcher-0.1.2.tgz
     version: 0.1.2
-generated: "2025-01-27T21:00:07.141880044Z"
+generated: "2025-01-28T10:34:03.819570923Z"
