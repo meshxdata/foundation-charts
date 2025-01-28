@@ -19,7 +19,7 @@ hiveMetastore:
   replicaCount: 1
 
   image:
-    repository: "061051218575.dkr.ecr.eu-north-1.amazonaws.com/foundation/hive-metastore"
+    repository: ""
     pullPolicy: IfNotPresent
     tag: "latest"
 
@@ -66,7 +66,7 @@ hiveMetastore:
 
   ingress:
     enabled: false
-    className: "tailscale"
+    className: ""
     annotations: {}
     # kubernetes.io/ingress.class: kong
     # kubernetes.io/tls-acme: "true"
@@ -102,7 +102,7 @@ hiveMetastore:
     - name: "iceberg.engine.hive.enabled"
       value: "true"
     - name: "metastore.warehouse.dir"
-      value: "s3a://warehouse/foundation"
+      value: ""
 
 # @ Section initDatabaseJob parameters
 initDatabaseJob:
@@ -147,19 +147,19 @@ postgresql:
     storageClass: "gp2"
   ## Authentication parameters
   auth:
-    userPasswordKey: "password"
-    secretName: "postgres"
+    userPasswordKey: ""
+    secretName: ""
     secretKeys:
-      password: "password"
+      password: ""
     ## @param username Name for a custom user to create
-    username: "hive"
+    username: ""
     ## @param password Password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
     password: ""
     ## @param database Name for a custom database to create
-    database: "hive"
+    database: ""
     ## @param auth.existingSecret Name of existing secret to use for PostgreSQL credentials. `auth.postgresPassword`, `auth.password`, and `auth.replicationPassword` will be ignored and picked up from this secret
     ##
-    existingSecret: "postgres"
+    existingSecret: ""
   ## @section PostgreSQL Primary parameters
   ##
   primary:
@@ -171,18 +171,18 @@ postgresql:
 
 
 externalDatabase:
-  host: foundation-postgres
-  username: "hive"
+  host: ""
+  username: ""
   password: ""
-  existingSecret: "postgres"
-  database: "hive"
+  existingSecret: ""
+  database: ""
   port: 5432
 
 objectStore:
   minio:
-    endpoint: "https://minio.foundation.svc.cluster.local"
-    accessKey: "minio"
-    secretKey: "minio123"
+    endpoint: ""
+    accessKey: ""
+    secretKey: ""
     existingSecret: ""
     existingSecretAccessKey: ""
     existingSecretSecretKey: ""
