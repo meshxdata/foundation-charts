@@ -48,38 +48,19 @@ hiveMetastore:
       cpu: 80
       memory: 256Mi
     
-
-  ## @param hiveMetastore.nodeSelector [object] Node labels for pod assignment
-  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
-  ##
   nodeSelector: {}
 
-  ## @param hiveMetastore.tolerations [array] Tolerations for Hive Metastore pod assignment.
-  ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-  ##
   tolerations: []
 
-  ## @param hiveMetastore.affinity [object] Affinity and anti-affinity for Hive Metastore pod assignment.
-  ## ref: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
-  ##
   affinity: {}
 
   ingress:
     enabled: false
     className: ""
     annotations: {}
-    # kubernetes.io/ingress.class: kong
-    # kubernetes.io/tls-acme: "true"
     hosts: []
-    # - host: chart-example.local
-    #   paths:
-    #   - path: /
-    #     pathType: ImplementationSpecific
-
     tls: []
-    # - secretName: chart-example-tls
-    #   hosts:
-    #   - chart-example.local
+
 
   ## @param hiveMetastore.extraEnvFrom Allows to propagate environment variables from various sources, for example k8s secrets
   extraEnvFrom: []
@@ -144,7 +125,7 @@ addSchemaJob:
 postgresql:
   enabled: false
   global:
-    storageClass: "gp2"
+    storageClass: ""
   ## Authentication parameters
   auth:
     userPasswordKey: ""
