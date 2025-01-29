@@ -1,11 +1,6 @@
 replicaCount: 1
 
-# set this to use an existing secret rather than generate one
 existingSecret:
-
-istio:
-  enabled: false
-
 
 config:
   host: 0.0.0.0

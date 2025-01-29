@@ -49,9 +49,7 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations:
-    kubernetes.io/ingress.class: ""
-    kubernetes.io/tls-acme: "false"
+  annotations: {}
   hosts:
     - host: ""
       paths:
