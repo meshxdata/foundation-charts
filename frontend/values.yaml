@@ -78,7 +78,7 @@ vpa:
 
 pdb:
   enabled: true
-  maxUnavailable: 1
+  maxUnavailable: ""
   selector:
     app: frontend
 
