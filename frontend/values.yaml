@@ -67,7 +67,7 @@ autoscaling:
   targetMemoryUtilizationPercentage: 80
 
 vpa:
-  enabled: false
+  enabled: ""
   updateMode: "Initial"
   minAllowed:
     cpu: "100m"
@@ -77,7 +77,7 @@ vpa:
     memory: "1024Mi"
 
 pdb:
-  enabled: false
+  enabled: ""
   maxUnavailable: "50%"
   selector:
     app: frontend
