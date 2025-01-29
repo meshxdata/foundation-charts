@@ -77,8 +77,8 @@ vpa:
     memory: "1024Mi"
 
 pdb:
-  enabled: true
-  maxUnavailable: ""
+  enabled: false
+  maxUnavailable: "50%"
   selector:
     app: frontend
 
