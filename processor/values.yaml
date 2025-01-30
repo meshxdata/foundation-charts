@@ -78,7 +78,6 @@ livenessProbe:
   initialDelaySeconds: 10
   tcpSocket:
     port: 65432
-    port: 65432
     periodSeconds: 10
 readinessProbe:
   initialDelaySeconds: 60
