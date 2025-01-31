@@ -24,7 +24,7 @@ config:
     foundation_validations_topic: "_fndtn_validations"
     foundation_classification_topic: "_fndtn_classification"
     foundation_notifications_topic: "_fndtn_notifications"
-z
+
 image:
   repository: ""
   pullPolicy: Always
