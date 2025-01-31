@@ -128,10 +128,10 @@ postgresql:
     storageClass: ""
   ## Authentication parameters
   auth:
-    userPasswordKey: ""
-    secretName: ""
+    #userPasswordKey: ""
+    secretName: "postgres"
     secretKeys:
-      password: ""
+      password: "password"
     ## @param username Name for a custom user to create
     username: ""
     ## @param password Password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
