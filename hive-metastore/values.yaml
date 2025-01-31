@@ -123,33 +123,21 @@ addSchemaJob:
   # requests: {}
 
 postgresql:
-  enabled: false
   global:
     storageClass: ""
   ## Authentication parameters
   auth:
-    #userPasswordKey: ""
+    userPasswordKey: "password"
     secretName: "postgres"
     secretKeys:
       password: "password"
     ## @param username Name for a custom user to create
-    username: ""
-    ## @param password Password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
-    password: ""
+    username: "hive"
     ## @param database Name for a custom database to create
     database: ""
     ## @param auth.existingSecret Name of existing secret to use for PostgreSQL credentials. `auth.postgresPassword`, `auth.password`, and `auth.replicationPassword` will be ignored and picked up from this secret
     ##
-    existingSecret: ""
-  ## @section PostgreSQL Primary parameters
-  ##
-  primary:
-    ## PostgreSQL Primary persistence configuration
-    ##
-    persistence:
-      ## @param primary.persistence.size PVC Storage Request for PostgreSQL volume
-      size: "50Gi"
-
+    existingSecret: "postgres"
 
 externalDatabase:
   host: ""
