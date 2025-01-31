@@ -8,13 +8,6 @@ serviceAccount:
   automountServiceAccountToken: true
   annotations: {}
 
-## @section Istio
-
-istio:
-  enabled: false
-
-## @section Hive Metastore Parameters
-
 hiveMetastore:
   replicaCount: 1
 
@@ -23,12 +16,9 @@ hiveMetastore:
     pullPolicy: IfNotPresent
     tag: "latest"
 
-  ## @param hiveMetastore.podAnnotations [object] Add extra annotations to the Hive Metastore pod(s)
-  ##
+ 
   podAnnotations: {}
 
-  ## @param hiveMetastore.podLabels [object] Add extra labels to the Hive Metastore pod(s)
-  ##
   podLabels: {}
 
   podSecurityContext:
@@ -61,19 +51,9 @@ hiveMetastore:
     hosts: []
     tls: []
 
-
-  ## @param hiveMetastore.extraEnvFrom Allows to propagate environment variables from various sources, for example k8s secrets
   extraEnvFrom: []
-  # extraEnvFrom:
-  #   - secretRef:
-  #       name: "hive-metastore-postgresql-credentials"
-  #   - secretRef:
-  #       name: "hive-metastore-minio-credentials"
-  
-  ## @param hiveMetastore.extraEnv YAML sequence of mappings with two keys "name" and "value" representing environment variables
+
   extraEnv: []
-  # - name: METASTORE_DB_HOSTNAME
-  #   value: localhost
 
   configProperties:
     - name: "hive.metastore.schema.verification"
@@ -85,48 +65,27 @@ hiveMetastore:
     - name: "metastore.warehouse.dir"
       value: ""
 
-# @ Section initDatabaseJob parameters
 initDatabaseJob:
   enabled: true
-  ## @param initJob.podAnnotations [object] Add extra annotations to the init job pod(s)
-  ##
   podAnnotations: {}
-
   resources:
-    ## Example:
-    ## limits:
-    ##    cpu: 2
-    ##    memory: 2Gi
     limits: {}
-    ## Examples:
-    ## requests:
-    ##    cpu: 1
-    ##    memory: 1Gi
     requests: {}
 
-# @ Section initDatabaseJob parameters
+
 addSchemaJob:
   enabled: true
-
   podAnnotations: {}
-
-  # resources:
-    ## Example:
-    ## limits:
-    ##    cpu: 2
-    ##    memory: 2Gi
-  # limits: {}
-    ## Examples:
-    ## requests:
-    ##    cpu: 1
-    ##    memory: 1Gi
-  # requests: {}
+  resources:
+    limits: {}
+    requests: {}
 
 livenessProbe:
   tcpSocket:
     port: 9083
   initialDelaySeconds: 45
   periodSeconds: 10
+
 readinessProbe:
   tcpSocket:
     port: 9083
