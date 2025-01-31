@@ -15,16 +15,16 @@ config:
 
 
   kafka:
-    cluster_host: ""
+    cluster_host: "foundation-kafka-kafka-bootstrap:9092"
 
   events:
-    openlineage_spark_topic: ""
-    foundation_events_topic: ""
-    foundation_profiling_topic: ""
-    foundation_validations_topic: ""
-    foundation_classification_topic: ""
-    foundation_notifications_topic: ""
-
+    openlineage_spark_topic: "_fndtn_product_metadata"
+    foundation_events_topic: "_fndtn_events"
+    foundation_profiling_topic: "_fndtn_profiling"
+    foundation_validations_topic: "_fndtn_validations"
+    foundation_classification_topic: "_fndtn_classification"
+    foundation_notifications_topic: "_fndtn_notifications"
+z
 image:
   repository: ""
   pullPolicy: Always
