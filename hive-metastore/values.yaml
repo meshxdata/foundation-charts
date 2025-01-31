@@ -164,9 +164,9 @@ objectStore:
     endpoint: ""
     accessKey: ""
     secretKey: ""
-    existingSecret: ""
-    existingSecretAccessKey: ""
-    existingSecretSecretKey: ""
+#    existingSecret: ""
+#    existingSecretAccessKey: ""
+#    existingSecretSecretKey: ""
 
 
 livenessProbe:
