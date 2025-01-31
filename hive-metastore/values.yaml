@@ -122,41 +122,6 @@ addSchemaJob:
     ##    memory: 1Gi
   # requests: {}
 
-postgresql:
-  global:
-    storageClass: ""
-  ## Authentication parameters
-  auth:
-    userPasswordKey: "password"
-    secretName: "postgres"
-    secretKeys:
-      password: "password"
-    ## @param username Name for a custom user to create
-    username: "hive"
-    ## @param database Name for a custom database to create
-    database: ""
-    ## @param auth.existingSecret Name of existing secret to use for PostgreSQL credentials. `auth.postgresPassword`, `auth.password`, and `auth.replicationPassword` will be ignored and picked up from this secret
-    ##
-    existingSecret: "postgres"
-
-externalDatabase:
-  host: ""
-  username: ""
-  password: ""
-  existingSecret: ""
-  database: ""
-  port: 5432
-
-objectStore:
-  minio:
-    endpoint: ""
-    accessKey: ""
-    secretKey: ""
-#    existingSecret: ""
-#    existingSecretAccessKey: ""
-#    existingSecretSecretKey: ""
-
-
 livenessProbe:
   tcpSocket:
     port: 9083
