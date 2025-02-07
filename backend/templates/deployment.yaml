@@ -40,9 +40,6 @@ spec:
             - configMapRef:
                 name: foundation-backend
             {{- if .Values.development.enabled -}}                
-            - secretRef:
-                name: foundation-backend
-            {{- end }}
           env:
           - name: MX_POSTGRES_PASSWORD
             valueFrom:
