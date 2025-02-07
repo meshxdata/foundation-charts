@@ -78,7 +78,7 @@ spec:
           securityContext:
             {{ - toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: { { .Values.image.pullPolicy } }
+          imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           entrypoint: [ "/bin/sh", "-c" ]
           command: [ "foundation" ]
           args: [ "service", "run-arcade" ]
