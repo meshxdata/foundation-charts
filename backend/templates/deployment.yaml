@@ -37,7 +37,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
-            - configMapRef:
+          - configMapRef:
                 name: foundation-backend
           env:
           - name: MX_POSTGRES_PASSWORD
@@ -59,40 +59,40 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           entrypoint: [ "/bin/sh", "-c" ]
           command: [ "foundation" ]
           args: [ "service", "run-profiler" ]
           envFrom:
-            - configMapRef:
-                name: foundation-backend
+          - configMapRef:
+            name: foundation-backend
           env:
-            - name: MX_POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: superUserPassword
+          - name: MX_POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: superUserPassword
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: "{{ .Chart.Name }}-arcade"
           securityContext:
-            {{ - toYaml .Values.securityContext | nindent 12 }}
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           entrypoint: [ "/bin/sh", "-c" ]
           command: [ "foundation" ]
           args: [ "service", "run-arcade" ]
           envFrom:
-            - configMapRef:
-                name: foundation-backend
+          - configMapRef:
+              name: foundation-backend
           env:
-            - name: MX_POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres
-                  key: superUserPassword
+          - name: MX_POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres
+                key: superUserPassword
           resources:
-            { { - toYaml .Values.resources | nindent 12 } }
+            {{- toYaml .Values.resources | nindent 12 }}
      {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
