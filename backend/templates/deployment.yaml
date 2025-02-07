@@ -39,7 +39,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: foundation-backend
-            {{- if .Values.development.enabled -}}                
           env:
           - name: MX_POSTGRES_PASSWORD
             valueFrom:
