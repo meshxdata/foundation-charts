@@ -38,13 +38,13 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
           - configMapRef:
-                name: foundation-backend
+              name: foundation-backend
           env:
           - name: MX_POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                  name: postgres
-                  key: superUserPassword
+                name: postgres
+                key: superUserPassword
           ports:
             - name: http
               containerPort: 9000
@@ -65,7 +65,7 @@ spec:
           args: [ "service", "run-profiler" ]
           envFrom:
           - configMapRef:
-            name: foundation-backend
+              name: foundation-backend
           env:
           - name: MX_POSTGRES_PASSWORD
             valueFrom:
