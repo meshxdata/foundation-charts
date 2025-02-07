@@ -10,7 +10,7 @@ data:
   MX_EXTERNAL_HOST: "backend.foundation.svc.cluster.local"
   MX_HOST_BIND: "{{ .Values.config.host }}"
   MX_IDENTIFIER: "backend"
-  MX_KAFKA_CLUSTER_HOST: "{{ .Values.config.kafka.cluter_host }}"
+  MX_KAFKA_CLUSTER_HOST: "{{ .Values.config.kafka.cluster_host }}"
   MX_LOGGING_LEVEL: "DEBUG"
   MX_POSTGRES_DATABASE: "{{ .Values.config.postgres.database }}"
   MX_POSTGRES_HOST: "{{ .Values.config.postgres.host }}"
