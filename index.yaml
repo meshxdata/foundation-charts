@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 0.2.1
-    created: "2025-02-07T12:49:48.745722911Z"
+    created: "2025-02-07T13:03:53.294712582Z"
     description: A Helm chart for Kubernetes
-    digest: 0541b02b4f57a2270af1d03edf4641661797a2d3741b97d7f2ddb32e233e2505
+    digest: cceb9fa2076e1288ee5c317d6667b52dee68bdf878dc1f81f23b5fa5865f961e
     name: backend
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-02-07T12:49:48.744880712Z"
+    created: "2025-02-07T13:03:53.294173925Z"
     description: A Helm chart for Kubernetes
     digest: 0ceb596a5c2226ef3408cad0a065b22f26aa0d805e3e65cfc4064db94af06467
     name: backend
@@ -24,9 +24,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-07T12:49:48.746405924Z"
+    created: "2025-02-07T13:03:53.295156532Z"
     description: A Helm chart for Kubernetes
-    digest: 994cf4fc80063345eac281b6cfbddf51e9e20ce799c98838007a05c2af8546a4
+    digest: 4bdb0434f13092e2cb5e7b118d0e57518ff4ad9d11bf768885d978708e1f844b
     name: frontend
     type: application
     urls:
@@ -35,14 +35,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-02-07T12:49:48.752146082Z"
+    created: "2025-02-07T13:03:53.30067589Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: 99d3799d9789531fcabd6dd5e1843926e13b1ceb6795eaebcd99ce7db41964fd
+    digest: 88182d4134d2227914da1a20277e9669163d416f04d7395c51723455ad2846f0
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -58,9 +58,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-07T12:49:48.75287465Z"
+    created: "2025-02-07T13:03:53.301805524Z"
     description: A Helm chart for the Foundation Processor
-    digest: 16f7fdf505880d86f6928cb15411ad50926a31c4a6b4bb8cd3ef1e5ad925eacd
+    digest: 34f3e8ff9be3c48818f10428856d6d89e849512655c8e7959aba7c598bbb577c
     name: processor
     type: application
     urls:
@@ -79,7 +79,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 25.1.0
-    created: "2025-02-07T12:49:48.762292561Z"
+    created: "2025-02-07T13:03:53.30998618Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -113,7 +113,7 @@ entries:
   vpa:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-07T12:49:48.762648845Z"
+    created: "2025-02-07T13:03:53.310743727Z"
     description: A Helm chart for the Vertical Pod Autoscaler
     digest: 6dd2625fd9ba56a535c8ebf0cd01e9a2fea6a10cc989b454f5f532ae3fc06e34
     name: vpa
@@ -124,12 +124,12 @@ entries:
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-07T12:49:48.763047608Z"
+    created: "2025-02-07T13:03:53.311870176Z"
     description: A Helm chart for the Foundation Watcher
-    digest: e6aab016b98d9d1d4e2636452250d2ddde0c0ff215d1dd01c19b7a038328b2b2
+    digest: ffefa30b50f13a4124ff052006b806354f65b947e28703161782ce36a5da5569
     name: watcher
     type: application
     urls:
     - watcher-0.1.2.tgz
     version: 0.1.2
-generated: "2025-02-07T12:49:48.743304633Z"
+generated: "2025-02-07T13:03:53.292664942Z"
