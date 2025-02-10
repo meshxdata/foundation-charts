@@ -42,7 +42,7 @@ spec:
             valueFrom:
               secretKeyRef:
                   name: postgres
-                  key: superUserPassword
+                  key: password
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
