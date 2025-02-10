@@ -23,7 +23,7 @@ A Helm chart for the Foundation API
 | **config.postgres.user** | string | `"foundation"` | The username for connecting to PostgreSQL. |
 | **development.enabled** | bool | `false` | Enables development-specific features or configurations. |
 | **image.pullPolicy** | string | `"Always"` | The Kubernetes image pull policy. |
-| **image.repository** | string | `"676206939231.dkr.ecr.eu-north-1.amazonaws.com/foundation/backend"` | The container image repository for the backend. |
+| **image.repository** | string | `""` | The container image repository for the backend. |
 | **image.tag** | string | `"latest"` | The tag for the container image. |
 | **imagePullSecrets** | list | `[]` | Secrets to use for pulling private images. |
 | **ingress.annotations."kubernetes.io/ingress.class"** | string | `"tailscale"` | Specifies the ingress class to use. |
