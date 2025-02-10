@@ -40,8 +40,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: foundation-processor
-            - secretRef:
-                name: foundation-processor
           env:
           - name: MX_POSTGRES_PASSWORD
             valueFrom:

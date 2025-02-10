@@ -37,8 +37,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: foundation-watcher
-            - secretRef:
-                name: foundation-watcher
           env:
           - name: MX_POSTGRES_PASSWORD
             valueFrom:
@@ -58,8 +56,6 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: foundation-watcher
-            - secretRef:
                 name: foundation-watcher
           env:
           - name: MX_POSTGRES_PASSWORD
