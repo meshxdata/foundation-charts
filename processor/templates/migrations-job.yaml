@@ -26,14 +26,12 @@ spec:
         envFrom:
         - configMapRef:
             name: foundation-processor
-        - secretRef:
-            name: foundation-processor
         env:
         - name: MX_POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
                 name: postgres
-                key: superUserPassword
+                key: password
       restartPolicy: OnFailure
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
