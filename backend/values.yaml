@@ -23,6 +23,7 @@ config:
     pool_max_size: 5
   kafka:
     cluster_host: ""
+  secret_key: ""
     
 imagePullSecrets: []
 
