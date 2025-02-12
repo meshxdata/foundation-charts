@@ -15,7 +15,7 @@ spec:
       {{- end }}
       containers:
       - name: migrations
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         command: ["bash", "-c"]
         args:
         - |
