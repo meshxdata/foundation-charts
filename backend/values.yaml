@@ -24,6 +24,9 @@ config:
   kafka:
     cluster_host: ""
   secret_key: ""
+  object_store:
+    access_key_id: "minio"
+    region: "eu-north-1"
     
 imagePullSecrets: []
 
