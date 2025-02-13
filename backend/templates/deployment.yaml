@@ -38,7 +38,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: [ "worker" ]
           envFrom:
-            - configMapRef:
+          - configMapRef:
               name: foundation-backend
           env:
           {{- range .Values.env }}
