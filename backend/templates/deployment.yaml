@@ -36,7 +36,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: [ "worker" ]
+          args: [ "worker" ]
           envFrom:
           - configMapRef:
               name: foundation-backend
@@ -63,7 +63,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
-          command: [ "profiler" ]
+          args: [ "profiler" ]
           envFrom:
           - configMapRef:
               name: foundation-backend
@@ -80,7 +80,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
-          command: [ "arcade" ]
+          args: [ "arcade" ]
           envFrom:
           - configMapRef:
               name: foundation-backend
