@@ -41,13 +41,13 @@ spec:
           - configMapRef:
             name: foundation-backend
           env:
-            {{- range .Values.env }}
-            - name: {{ .name | quote }}
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .secretName | quote }}
-                  key: {{ .secretKey | quote }}
-            {{- end }}
+          {{- range .Values.env }}
+          - name: {{ .name | quote }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ .secretName | quote }}
+                key: {{ .secretKey | quote }}
+           {{- end }}
           ports:
             - name: http
               containerPort: 9000
