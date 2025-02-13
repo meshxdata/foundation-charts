@@ -36,6 +36,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: [ "worker" ]
           envFrom:
           - configMapRef:
               name: foundation-backend
@@ -60,9 +61,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
-          entrypoint: [ "/bin/sh", "-c" ]
-          command: [ "foundation" ]
-          args: [ "service", "run-profiler" ]
+          command: [ "profiler" ]
           envFrom:
           - configMapRef:
               name: foundation-backend
@@ -79,9 +78,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
-          entrypoint: [ "/bin/sh", "-c" ]
-          command: [ "foundation" ]
-          args: [ "service", "run-arcade" ]
+          command: [ "arcade" ]
           envFrom:
           - configMapRef:
               name: foundation-backend
