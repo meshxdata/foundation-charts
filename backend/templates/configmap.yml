@@ -28,4 +28,6 @@ data:
   MX_WATCHER_HOST: "watcher"
   MX_WATCHER_PORT: "65432"
   MX_PORT_BIND: "{{ .Values.config.port }}"
-
+  MX_OBJECT_STORE_URL: "http://minio.foundation.svc.cluster.local"
+  MX_OBJECT_STORE_ACCESS_KEY_ID: "{{ .Values.config.object_store.access_key_id }}"
+  MX_OBJECT_STORE_REGION: "{{ .Values.config.object_store.region }}"
