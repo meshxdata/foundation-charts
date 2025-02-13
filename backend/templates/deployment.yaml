@@ -38,16 +38,16 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: [ "worker" ]
           envFrom:
-          - configMapRef:
-            name: foundation-backend
+            - configMapRef:
+              name: foundation-backend
           env:
           {{- range .Values.env }}
-          - name: {{ .name | quote }}
-            valueFrom:
-              secretKeyRef:
-                name: {{ .secretName | quote }}
-                key: {{ .secretKey | quote }}
-           {{- end }}
+            - name: {{ .name | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName | quote }}
+                  key: {{ .secretKey | quote }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 9000
