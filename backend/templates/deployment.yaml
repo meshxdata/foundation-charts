@@ -38,14 +38,16 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: [ "worker" ]
           envFrom:
-          - configMapRef:
+            - configMapRef:
               name: foundation-backend
           env:
-          - name: MX_POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: postgres
-                key: superUserPassword
+            {{- range .Values.env }}
+            - name: {{ .name | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName | quote }}
+                  key: {{ .secretKey | quote }}
+            {{- end }}
           ports:
             - name: http
               containerPort: 9000
