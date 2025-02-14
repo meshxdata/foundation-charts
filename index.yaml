@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 0.2.8
-    created: "2025-02-14T13:51:15.782212121Z"
+    created: "2025-02-14T15:37:41.354473728Z"
     description: A Helm chart for Kubernetes
-    digest: 5ddd665bb5b5a32c8af50810712e7bbf8684ad8085d4db41b67bfc63d59e8836
+    digest: b2db8c0af195577915db65aa55e6f39b3fe9f324bdb5e7c863a6acf50bb899e4
     name: backend
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.2.7
-    created: "2025-02-14T13:51:15.781589312Z"
+    created: "2025-02-14T15:37:41.353166942Z"
     description: A Helm chart for Kubernetes
     digest: 108ff252d326d6cff7f4f488aeadd43b34e155a6153373417b2054cbfcda9f5e
     name: backend
@@ -23,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-02-14T13:51:15.780925465Z"
+    created: "2025-02-14T15:37:41.352203931Z"
     description: A Helm chart for Kubernetes
     digest: 0ceb596a5c2226ef3408cad0a065b22f26aa0d805e3e65cfc4064db94af06467
     name: backend
@@ -34,9 +34,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.2.10
-    created: "2025-02-14T13:51:15.783116809Z"
+    created: "2025-02-14T15:37:41.355397626Z"
     description: A Helm chart for Kubernetes
-    digest: 12dc7518af213b2e7766de9812f50e7667e6a3eb9643b3108624418dc05628a6
+    digest: 0eaf5f171bb400c7c602766319feab55f6e9a09ddad6652b4ebd23dcaea6aeeb
     name: frontend
     type: application
     urls:
@@ -44,7 +44,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.2.10
-    created: "2025-02-14T13:51:15.782676663Z"
+    created: "2025-02-14T15:37:41.35495904Z"
     description: A Helm chart for Kubernetes
     digest: 976684785c656287798b2731f1fa4fad38dda7c68b5a7bfd81547fe5a8c838f0
     name: frontend
@@ -55,14 +55,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-02-14T13:51:15.789157881Z"
+    created: "2025-02-14T15:37:41.360830359Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: 30e237ecc6d61c5a0ba3a701ab9a84cf443fcb0faa89b526ecc579740a232abd
+    digest: 244b55e73b8a723245e6787d415566da5c4f2b955a86b621d02dfb8928de201d
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -78,9 +78,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-14T13:51:15.78959401Z"
+    created: "2025-02-14T15:37:41.361617943Z"
     description: A Helm chart for the Foundation Processor
-    digest: 9e48632144a4898230be087e6f352d974877d48d9c0073f7c163a0e00cc290ff
+    digest: 5b53663be16e93853fe85f779d15fc557d11dcecd14bd974f81e8debf2d1948c
     name: processor
     type: application
     urls:
@@ -99,7 +99,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 25.1.0
-    created: "2025-02-14T13:51:15.798758676Z"
+    created: "2025-02-14T15:37:41.371493523Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -133,7 +133,7 @@ entries:
   vpa:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-14T13:51:15.799216345Z"
+    created: "2025-02-14T15:37:41.37190607Z"
     description: A Helm chart for the Vertical Pod Autoscaler
     digest: 6dd2625fd9ba56a535c8ebf0cd01e9a2fea6a10cc989b454f5f532ae3fc06e34
     name: vpa
@@ -144,12 +144,12 @@ entries:
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-14T13:51:15.799624832Z"
+    created: "2025-02-14T15:37:41.372344886Z"
     description: A Helm chart for the Foundation Watcher
-    digest: ab5d9fea84a73c5e8a296d886dc47f8ac0fb4c7edb6b1de6ad706f41a5532400
+    digest: 9e32281011bd8aa2900e6a31fb2ad28bce4d7c8eda0e88ce3a862be46c4a9f6c
     name: watcher
     type: application
     urls:
     - watcher-0.1.2.tgz
     version: 0.1.2
-generated: "2025-02-14T13:51:15.779289168Z"
+generated: "2025-02-14T15:37:41.351378496Z"
