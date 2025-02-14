@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 0.2.8
-    created: "2025-02-14T17:21:55.729132353Z"
+    created: "2025-02-14T23:12:16.942506442Z"
     description: A Helm chart for Kubernetes
-    digest: 0323eb68b28ed1286876f730099e157e84c24ee1cb1553e704a7e7f086408238
+    digest: b3254335d2655b26ccf7195211721472c2a05c2026a8b28572cdc1ab53f175bf
     name: backend
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.2.7
-    created: "2025-02-14T17:21:55.728575694Z"
+    created: "2025-02-14T23:12:16.94195246Z"
     description: A Helm chart for Kubernetes
     digest: 108ff252d326d6cff7f4f488aeadd43b34e155a6153373417b2054cbfcda9f5e
     name: backend
@@ -23,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-02-14T17:21:55.727164609Z"
+    created: "2025-02-14T23:12:16.940600303Z"
     description: A Helm chart for Kubernetes
     digest: 0ceb596a5c2226ef3408cad0a065b22f26aa0d805e3e65cfc4064db94af06467
     name: backend
@@ -34,9 +34,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.2.10
-    created: "2025-02-14T17:21:55.730068671Z"
+    created: "2025-02-14T23:12:16.943428759Z"
     description: A Helm chart for Kubernetes
-    digest: 775de89eda337e8751246ccdf7b9e686ada88eb38df994763b18bb6258a718bd
+    digest: a3133486a095f97c52fd8e19a1105a235a25ec443951cf15b0786fd649b39b39
     name: frontend
     type: application
     urls:
@@ -44,7 +44,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.2.10
-    created: "2025-02-14T17:21:55.729647334Z"
+    created: "2025-02-14T23:12:16.942988569Z"
     description: A Helm chart for Kubernetes
     digest: 976684785c656287798b2731f1fa4fad38dda7c68b5a7bfd81547fe5a8c838f0
     name: frontend
@@ -55,14 +55,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-02-14T17:21:55.735659348Z"
+    created: "2025-02-14T23:12:16.949449284Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: 063363c526faa45dbe25925aabed1ec0318e041c7cace6a49ee45dffc3f61729
+    digest: c6d8902ffe013819c67088559fe7c3cf02627eec055d506b56555938f9a0bf56
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -77,8 +77,18 @@ entries:
     version: 1.1.5
   processor:
   - apiVersion: v2
+    appVersion: 0.2.3
+    created: "2025-02-14T23:12:16.950331567Z"
+    description: A Helm chart for the Foundation Processor
+    digest: 190dd8afcf7bdaea0a1790195e288cc2ee86dff5de22d6ad22aff16a6de075ce
+    name: processor
+    type: application
+    urls:
+    - processor-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-14T17:21:55.736625963Z"
+    created: "2025-02-14T23:12:16.949927795Z"
     description: A Helm chart for the Foundation Processor
     digest: f0887d017fbc2e9c5304ffb17ac80481e46025368853c656ea54ea65704de000
     name: processor
@@ -99,7 +109,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 25.1.0
-    created: "2025-02-14T17:21:55.744827665Z"
+    created: "2025-02-14T23:12:16.959483941Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -133,7 +143,7 @@ entries:
   vpa:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-14T17:21:55.745433576Z"
+    created: "2025-02-14T23:12:16.959871913Z"
     description: A Helm chart for the Vertical Pod Autoscaler
     digest: 6dd2625fd9ba56a535c8ebf0cd01e9a2fea6a10cc989b454f5f532ae3fc06e34
     name: vpa
@@ -144,12 +154,12 @@ entries:
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-14T17:21:55.746476948Z"
+    created: "2025-02-14T23:12:16.960277348Z"
     description: A Helm chart for the Foundation Watcher
-    digest: 9db88981edd69c51e9de63af711ce1f6473dcb607aed10748acf83148c0211aa
+    digest: ed8b3ffe584270e3c47329881658f75606137383bab4ca5917e5580817db8f20
     name: watcher
     type: application
     urls:
     - watcher-0.1.2.tgz
     version: 0.1.2
-generated: "2025-02-14T17:21:55.726480031Z"
+generated: "2025-02-14T23:12:16.939908204Z"
