@@ -36,6 +36,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args: ["migrations"]
+          envFrom:
+            - configMapRef:
+                name: foundation-processor
           env:
           {{- range .Values.env }}
             - name: {{ .name | quote }}
