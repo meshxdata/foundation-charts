@@ -30,6 +30,25 @@ spec:
       serviceAccountName: {{ .Values.serviceAccount.name }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: init
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: [ "migrations" ]
+          envFrom:
+          - configMapRef:
+              name: foundation-backend
+          env:
+          {{- range .Values.env }}
+            - name: {{ .name | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName | quote }}
+                  key: {{ .secretKey | quote }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -68,11 +87,12 @@ spec:
           - configMapRef:
               name: foundation-backend
           env:
-          - name: MX_POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: postgres
-                key: superUserPassword
+          {{- range .Values.env }}
+            - name: {{ .name | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName | quote }}
+                  key: {{ .secretKey | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         - name: "{{ .Chart.Name }}-arcade"
@@ -85,11 +105,12 @@ spec:
           - configMapRef:
               name: foundation-backend
           env:
-          - name: MX_POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: postgres
-                key: superUserPassword
+          {{- range .Values.env }}
+            - name: {{ .name | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .secretName | quote }}
+                  key: {{ .secretKey | quote }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
      {{- with .Values.nodeSelector }}
