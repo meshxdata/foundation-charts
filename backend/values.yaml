@@ -12,6 +12,7 @@ image:
   tag: "latest"
 
 config:
+  logging_level: ""
   host: ""
   port: ""
   postgres:
