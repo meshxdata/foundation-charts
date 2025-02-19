@@ -3,9 +3,9 @@ entries:
   backend:
   - apiVersion: v2
     appVersion: 0.2.8
-    created: "2025-02-19T09:25:43.865844248Z"
+    created: "2025-02-19T09:34:18.866623478Z"
     description: A Helm chart for Kubernetes
-    digest: e0c1c3cb9a8ccf3ec88afcb4c4a4d2d41e99ae2f7a7bcd384ac90186c77fdaa9
+    digest: 36c24ef75645021fda528058ca0684eaa1e98a6832aeba907092a4f3259a8bc5
     name: backend
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.2.7
-    created: "2025-02-19T09:25:43.865321724Z"
+    created: "2025-02-19T09:34:18.866040545Z"
     description: A Helm chart for Kubernetes
     digest: 108ff252d326d6cff7f4f488aeadd43b34e155a6153373417b2054cbfcda9f5e
     name: backend
@@ -23,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-02-19T09:25:43.864728639Z"
+    created: "2025-02-19T09:34:18.865492227Z"
     description: A Helm chart for Kubernetes
     digest: 0ceb596a5c2226ef3408cad0a065b22f26aa0d805e3e65cfc4064db94af06467
     name: backend
@@ -34,9 +34,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 0.2.10
-    created: "2025-02-19T09:25:43.866948055Z"
+    created: "2025-02-19T09:34:18.867559687Z"
     description: A Helm chart for Kubernetes
-    digest: c5ea82c0d55481f0cf7ea4d38657d60dfaf4898bcdd9f92cbc726ac998026588
+    digest: 52319da6b0e55473af778059bc117d2573e8d79e4475d03cfc947c8b0b466b75
     name: frontend
     type: application
     urls:
@@ -44,7 +44,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.2.10
-    created: "2025-02-19T09:25:43.866318992Z"
+    created: "2025-02-19T09:34:18.867073844Z"
     description: A Helm chart for Kubernetes
     digest: 976684785c656287798b2731f1fa4fad38dda7c68b5a7bfd81547fe5a8c838f0
     name: frontend
@@ -55,14 +55,14 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: 1.1.2
-    created: "2025-02-19T09:25:43.872925736Z"
+    created: "2025-02-19T09:34:18.874242073Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
       repository: https://charts.bitnami.com/bitnami
       version: ~15.2.1
     description: A Helm chart to deploy hive-metastore
-    digest: 96a0cd49627e170199ff1c2edd551446ddf699a0ba8fa4eba766078853863783
+    digest: bf2d346f90a0fdb1742d5039622f8081e8d22f6fe2ccbe23daeb0c7c8333205f
     home: https://github.com/apache/hive
     icon: https://hive.apache.org/images/hive_logo_medium.jpg
     keywords:
@@ -78,9 +78,9 @@ entries:
   processor:
   - apiVersion: v2
     appVersion: 0.2.3
-    created: "2025-02-19T09:25:43.873822597Z"
+    created: "2025-02-19T09:34:18.875091551Z"
     description: A Helm chart for the Foundation Processor
-    digest: 7b9389edeec23af84a42ad40d4a0a8a80ed0a83c1107e21feb7fb1c10d1097ae
+    digest: 4ce578dfaef190bb5d87d54b60d868d1b93d1e0717079c946b014fc01fb07189
     name: processor
     type: application
     urls:
@@ -88,7 +88,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-19T09:25:43.873410509Z"
+    created: "2025-02-19T09:34:18.874688823Z"
     description: A Helm chart for the Foundation Processor
     digest: f0887d017fbc2e9c5304ffb17ac80481e46025368853c656ea54ea65704de000
     name: processor
@@ -96,6 +96,49 @@ entries:
     urls:
     - processor-0.1.1.tgz
     version: 0.1.1
+  redis:
+  - annotations:
+      category: Database
+      images: |
+        - name: kubectl
+          image: docker.io/bitnami/kubectl:1.32.2-debian-12-r0
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r37
+        - name: redis
+          image: docker.io/bitnami/redis:7.4.2-debian-12-r2
+        - name: redis-exporter
+          image: docker.io/bitnami/redis-exporter:1.67.0-debian-12-r7
+        - name: redis-sentinel
+          image: docker.io/bitnami/redis-sentinel:7.4.2-debian-12-r2
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 7.4.2
+    created: "2025-02-19T09:34:18.881053424Z"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Redis(R) is an open source, advanced key-value store. It is often
+      referred to as a data structure server since keys can contain strings, hashes,
+      lists, sets and sorted sets.
+    digest: 0aa147ec2e90177e3cf89faa2eb06feca2ee612838c164dc72dd5d0e7e4e752b
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: redis
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/redis
+    urls:
+    - redis-20.7.1.tgz
+    version: 20.7.1
   sonarqube:
   - annotations:
       category: DeveloperTools
@@ -109,7 +152,7 @@ entries:
       licenses: Apache-2.0
     apiVersion: v2
     appVersion: 25.1.0
-    created: "2025-02-19T09:25:43.883115314Z"
+    created: "2025-02-19T09:34:18.890456905Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -143,7 +186,7 @@ entries:
   vpa:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-19T09:25:43.883534455Z"
+    created: "2025-02-19T09:34:18.891075314Z"
     description: A Helm chart for the Vertical Pod Autoscaler
     digest: 6dd2625fd9ba56a535c8ebf0cd01e9a2fea6a10cc989b454f5f532ae3fc06e34
     name: vpa
@@ -154,12 +197,12 @@ entries:
   watcher:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-02-19T09:25:43.88396095Z"
+    created: "2025-02-19T09:34:18.892024224Z"
     description: A Helm chart for the Foundation Watcher
-    digest: f28b4d94d9d35db5586b1b90ec8fb349c72d0ac727695cc71744207a14376d16
+    digest: f80209bb36ebb21ad66983220475a77b4af67140cdaf278442dc7364c7baeed3
     name: watcher
     type: application
     urls:
     - watcher-0.1.2.tgz
     version: 0.1.2
-generated: "2025-02-19T09:25:43.86319324Z"
+generated: "2025-02-19T09:34:18.863908109Z"
