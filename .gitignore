@@ -1,0 +1,15 @@
+.env
+.venv
+.idea/
+.vscode/
+.fleet/
+__pycache__/
+scripts/*
+.benchmarks
+.pytest_cache
+.coverage
+coverage.xml
+core-watcher-*.tgz
+.DS_Store
+pyrightconfig.json
+.*.swp

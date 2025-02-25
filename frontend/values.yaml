@@ -1,0 +1,95 @@
+replicaCount: 1
+
+image:
+  repository: ""
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+
+  hosts: []
+
+  tls: []
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: 3000
+readinessProbe:
+  httpGet:
+    path: /
+    port: 3000
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+vpa:
+  enabled: ""
+  updateMode: "Initial"
+  minAllowed:
+    cpu: "100m"
+    memory: "128Mi"
+  maxAllowed:
+    cpu: "800m"
+    memory: "1024Mi"
+
+pdb:
+  enabled: ""
+  maxUnavailable: "50%"
+  selector:
+    app: frontend
+
+volumes: []
+
+volumeMounts: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+env: {}

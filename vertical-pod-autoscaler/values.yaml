@@ -1,0 +1,66 @@
+{{- if .Values.vpaAdmissionController.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "vpa-admission-chart.name" . }}-controller
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: vpa-admission-controller
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  replicas: {{ .Values.vpaAdmissionController.replicaCount }}
+  selector:
+    matchLabels:
+      app: vpa-admission-controller
+  template:
+    metadata:
+      labels:
+        app: vpa-admission-controller
+    spec:
+      serviceAccountName: vpa-admission-controller
+      securityContext:
+{{ toYaml .Values.vpaAdmissionController.securityContext | indent 8 }}
+      containers:
+        - name: admission-controller
+          image: "{{ .Values.vpaAdmissionController.image.repository }}:{{ .Values.vpaAdmissionController.image.tag }}"
+          imagePullPolicy: {{ .Values.vpaAdmissionController.image.pullPolicy }}
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          args:
+{{- range .Values.vpaAdmissionController.extraArgs }}
+            - "{{ . }}"
+{{- end }}
+          volumeMounts:
+            - name: tls-certs
+              mountPath: "/etc/tls-certs"
+              readOnly: true
+          resources:
+{{ toYaml .Values.vpaAdmissionController.resources | indent 12 }}
+          ports:
+            - containerPort: 8000
+            - name: prometheus
+              containerPort: 8944
+      volumes:
+        - name: tls-certs
+          secret:
+            secretName: {{ .Values.vpaAdmissionController.tlsSecretName }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "vpa-admission-chart.name" . }}-webhook
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: vpa-admission-controller
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  ports:
+    - port: 443
+      targetPort: 8000
+  selector:
+    app: vpa-admission-controller
+{{- end }}

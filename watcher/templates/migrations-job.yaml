@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "chart.fullname" . }}-job
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
+spec:
+  ttlSecondsAfterFinished: 120
+  backoffLimit: 10
+  template:
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+      - name: migrations
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        command: ["bash", "-c"]
+        args:
+        - |
+            set -ex
+            pogo migrate-yoyo --skip-files;
+            pogo apply -vvv;
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        envFrom:
+        - configMapRef:
+            name: foundation-watcher
+        env:
+        - name: MX_POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+                name: postgres
+                key: password
+      restartPolicy: OnFailure
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}

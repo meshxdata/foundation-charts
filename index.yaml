@@ -1,0 +1,228 @@
+apiVersion: v1
+entries:
+  backend:
+  - apiVersion: v2
+    appVersion: 0.2.8
+    created: "2025-02-24T12:25:13.778623279Z"
+    description: A Helm chart for Kubernetes
+    digest: 8563ec378c16cfbbdead2d2592fec12bfb17685a0e6fe8ab5d9eaccf93b2ad37
+    name: backend
+    type: application
+    urls:
+    - backend-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: 0.2.8
+    created: "2025-02-24T12:25:13.778101195Z"
+    description: A Helm chart for Kubernetes
+    digest: 4377ec2039f1dbaeeca4ef5cb1ba05af98fc6ea9b87e9f5b94f5f35e83cf2a9f
+    name: backend
+    type: application
+    urls:
+    - backend-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: 0.2.8
+    created: "2025-02-24T12:25:13.777563451Z"
+    description: A Helm chart for Kubernetes
+    digest: 5ae6e1bbd403a1117c56f4cac03826e02d154c742f6b03328ea0c739a45af5ac
+    name: backend
+    type: application
+    urls:
+    - backend-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 0.2.7
+    created: "2025-02-24T12:25:13.777043561Z"
+    description: A Helm chart for Kubernetes
+    digest: 108ff252d326d6cff7f4f488aeadd43b34e155a6153373417b2054cbfcda9f5e
+    name: backend
+    type: application
+    urls:
+    - backend-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-24T12:25:13.776484067Z"
+    description: A Helm chart for Kubernetes
+    digest: 0ceb596a5c2226ef3408cad0a065b22f26aa0d805e3e65cfc4064db94af06467
+    name: backend
+    type: application
+    urls:
+    - backend-0.1.9.tgz
+    version: 0.1.9
+  frontend:
+  - apiVersion: v2
+    appVersion: 0.2.10
+    created: "2025-02-24T12:25:13.77948645Z"
+    description: A Helm chart for Kubernetes
+    digest: bb8f11fc23012d63f578ce3bdba61b6d5b5c0a7a4337aed5ab4ca4cdf9d824a9
+    name: frontend
+    type: application
+    urls:
+    - frontend-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 0.2.10
+    created: "2025-02-24T12:25:13.779064031Z"
+    description: A Helm chart for Kubernetes
+    digest: 976684785c656287798b2731f1fa4fad38dda7c68b5a7bfd81547fe5a8c838f0
+    name: frontend
+    type: application
+    urls:
+    - frontend-0.1.2.tgz
+    version: 0.1.2
+  hive-metastore:
+  - apiVersion: v2
+    appVersion: 1.1.2
+    created: "2025-02-24T12:25:13.785531939Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: ~15.2.1
+    description: A Helm chart to deploy hive-metastore
+    digest: 55e70ca1d1c488611f2b0a272c15fa8a2688991ab0e3c54f850ca55cc3d21bfa
+    home: https://github.com/apache/hive
+    icon: https://hive.apache.org/images/hive_logo_medium.jpg
+    keywords:
+    - hive-metastore
+    name: hive-metastore
+    sources:
+    - https://github.com/apache/hive
+    - https://github.com/meshxdata/hive-metastore
+    type: application
+    urls:
+    - hive-metastore-1.1.5.tgz
+    version: 1.1.5
+  processor:
+  - apiVersion: v2
+    appVersion: 0.2.3
+    created: "2025-02-24T12:25:13.786364482Z"
+    description: A Helm chart for the Foundation Processor
+    digest: ce3c1ec2a4be3eba42fe3cf7370707be3c33efadd58f9b240eae458101fb3fea
+    name: processor
+    type: application
+    urls:
+    - processor-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-02-24T12:25:13.785962552Z"
+    description: A Helm chart for the Foundation Processor
+    digest: f0887d017fbc2e9c5304ffb17ac80481e46025368853c656ea54ea65704de000
+    name: processor
+    type: application
+    urls:
+    - processor-0.1.1.tgz
+    version: 0.1.1
+  redis:
+  - annotations:
+      category: Database
+      images: |
+        - name: kubectl
+          image: docker.io/bitnami/kubectl:1.32.2-debian-12-r0
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r37
+        - name: redis
+          image: docker.io/bitnami/redis:7.4.2-debian-12-r2
+        - name: redis-exporter
+          image: docker.io/bitnami/redis-exporter:1.67.0-debian-12-r7
+        - name: redis-sentinel
+          image: docker.io/bitnami/redis-sentinel:7.4.2-debian-12-r2
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 7.4.2
+    created: "2025-02-24T12:25:13.793223294Z"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: Redis(R) is an open source, advanced key-value store. It is often
+      referred to as a data structure server since keys can contain strings, hashes,
+      lists, sets and sorted sets.
+    digest: 0aa147ec2e90177e3cf89faa2eb06feca2ee612838c164dc72dd5d0e7e4e752b
+    home: https://bitnami.com
+    icon: https://dyltqmyl993wv.cloudfront.net/assets/stacks/redis/img/redis-stack-220x234.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: redis
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/redis
+    urls:
+    - redis-20.7.1.tgz
+    version: 20.7.1
+  sonarqube:
+  - annotations:
+      category: DeveloperTools
+      images: |
+        - name: jmx-exporter
+          image: docker.io/bitnami/jmx-exporter:1.1.0-debian-12-r2
+        - name: os-shell
+          image: docker.io/bitnami/os-shell:12-debian-12-r35
+        - name: sonarqube
+          image: docker.io/bitnami/sonarqube:25.1.0-debian-12-r2
+      licenses: Apache-2.0
+    apiVersion: v2
+    appVersion: 25.1.0
+    created: "2025-02-24T12:25:13.801209528Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.x.x
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: SonarQube(TM) is an open source quality management platform that
+      analyzes and measures code's technical quality. It enables developers to detect
+      code issues, vulnerabilities, and bugs in early stages.
+    digest: 5b9b72f28cce85e205b9e231d01e85b0149eab39fc4be6ef2f33e2daa66a9359
+    home: https://bitnami.com
+    icon: https://bitnami.com/assets/stacks/sonarqube/img/sonarqube-stack-220x234.png
+    keywords:
+    - sonarqube
+    - code-quality
+    - code-review
+    - static-analysis
+    maintainers:
+    - name: Broadcom, Inc. All Rights Reserved.
+      url: https://github.com/bitnami/charts
+    name: sonarqube
+    sources:
+    - https://github.com/bitnami/charts/tree/main/bitnami/sonarqube
+    urls:
+    - sonarqube-8.0.2.tgz
+    version: 8.0.2
+  vpa:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-02-24T12:25:13.80191264Z"
+    description: A Helm chart for the Vertical Pod Autoscaler
+    digest: 6dd2625fd9ba56a535c8ebf0cd01e9a2fea6a10cc989b454f5f532ae3fc06e34
+    name: vpa
+    type: application
+    urls:
+    - vpa-0.1.1.tgz
+    version: 0.1.1
+  watcher:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-02-24T12:25:13.802999359Z"
+    description: A Helm chart for the Foundation Watcher
+    digest: 8d9525933ba67c3fa9d11651b6ae868435458957f4ce0ed20a9eaa791dbc80d4
+    name: watcher
+    type: application
+    urls:
+    - watcher-0.1.2.tgz
+    version: 0.1.2
+generated: "2025-02-24T12:25:13.775006467Z"

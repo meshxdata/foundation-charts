@@ -1,0 +1,86 @@
+replicaCount: 1
+
+existingSecret:
+
+config:
+  host: 0.0.0.0
+  port: 65433
+  postgres:
+    host: ""
+    port: 5432
+    database: "" 
+    user: ""
+    pool_min_size: 1
+    pool_max_size: 5
+
+
+  kafka:
+    cluster_host: "foundation-kafka-kafka-bootstrap:9092"
+
+  events:
+    openlineage_spark_topic: "_fndtn_product_metadata"
+    foundation_events_topic: "_fndtn_events"
+    foundation_profiling_topic: "_fndtn_profiling"
+    foundation_validations_topic: "_fndtn_validations"
+    foundation_classification_topic: "_fndtn_classification"
+    foundation_notifications_topic: "_fndtn_notifications"
+
+image:
+  repository: ""
+  pullPolicy: Always
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: "default"
+
+podSecurityContext:
+  fsGroup: 2000
+  runAsNonRoot: true
+  runAsUser: 1000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 65433
+
+ingress:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+
+livenessProbe:
+  initialDelaySeconds: 10
+  tcpSocket:
+    port: 65433
+    periodSeconds: 10
+readinessProbe:
+  initialDelaySeconds: 60
+  tcpSocket:
+    port: 65433
+    periodSeconds: 10

@@ -1,0 +1,35 @@
+name: Release Charts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
+          
+      - name: Update
+        shell: bash
+        run: |
+          helm package {backend,processor,watcher,frontend,hive-metastore} -d .
+          helm repo index .
+          git add .
+          git config user.name "helm"
+          git config user.email "helm@meshx.io"
+          git commit -m "Updated from ref: $GITHUB_SHA"
+          git push

@@ -1,0 +1,14 @@
+{{- if .Values.pdb.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Values.pdb.selector.app | default .Chart.Name }}
+spec:
+  maxUnavailable: {{ .Values.pdb.maxUnavailable | quote }}
+  selector:
+    matchLabels:
+      app: {{ .Values.pdb.selector.app | default .Chart.Name }}
+{{- end }}

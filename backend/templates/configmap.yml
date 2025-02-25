@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foundation-backend
+data:
+  MX_API_PREFIX: "/api"
+  MX_DEBUG: "true"
+  MX_ENV: "development"
+  MX_EVENTS_KAFKA_TOPIC: "_fndtn_events"
+  MX_EXTERNAL_HOST: "backend"
+  MX_HOST_BIND: "{{ .Values.config.host }}"
+  MX_IDENTIFIER: "backend"
+  MX_KAFKA_CLUSTER_HOST: "{{ .Values.config.kafka.cluster_host }}"
+  MX_LOGGING_LEVEL: "DEBUG"
+  MX_POSTGRES_DATABASE: "{{ .Values.config.postgres.database }}"
+  MX_POSTGRES_HOST: "{{ .Values.config.postgres.host }}"
+  MX_POSTGRES_PORT: "{{ .Values.config.postgres.port }}"
+  MX_POSTGRES_POOL_MAX_SIZE: "{{ .Values.config.postgres.pool_max_size }}"
+  MX_POSTGRES_POOL_MIN_SIZE: "{{ .Values.config.postgres.pool_min_size }}"
+  MX_POSTGRES_USER: "{{ .Values.config.postgres.user }}"
+  MX_PROCESSOR_HOST: "processor"
+  MX_PROCESSOR_PORT: "65433"
+  MX_RELEASE_TAG: "{{ .Values.image.tag }}"
+  MX_SECRET_KEY: "{{ .Values.config.secret_key }}"
+  MX_TIMING_LOG_LEVEL: "DEBUG"
+  MX_TRINO_HOST: "trino"
+  MX_TRINO_PORT: "8080"
+  MX_WATCHER_HOST: "watcher"
+  MX_WATCHER_PORT: "65432"
+  MX_PORT_BIND: "{{ .Values.config.port }}"
+  MX_PROXY_TOKEN_ENABLED: "{{ .Values.config.proxy_token_enabled }}"

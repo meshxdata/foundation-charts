@@ -1,0 +1,93 @@
+nameOverride: ""
+
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: "hive-metastore"
+  automountServiceAccountToken: true
+  annotations: {}
+
+hiveMetastore:
+  replicaCount: 1
+
+  image:
+    repository: ""
+    pullPolicy: IfNotPresent
+    tag: "latest"
+
+ 
+  podAnnotations: {}
+
+  podLabels: {}
+
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 10001
+
+
+  service:
+    type: ClusterIP
+    port: 9083
+
+  resources:
+    limits:
+      cpu: 500
+      memory: 512Mi
+    requests:
+      cpu: 80
+      memory: 256Mi
+    
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+    hosts: []
+    tls: []
+
+  extraEnvFrom: []
+
+  extraEnv: []
+
+  configProperties:
+    - name: "hive.metastore.schema.verification"
+      value: "true"
+    - name: "fs.s3a.path.style.access"
+      value: "true"
+    - name: "iceberg.engine.hive.enabled"
+      value: "true"
+    - name: "metastore.warehouse.dir"
+      value: ""
+
+initDatabaseJob:
+  enabled: true
+  podAnnotations: {}
+  resources:
+    limits: {}
+    requests: {}
+
+
+addSchemaJob:
+  enabled: true
+  podAnnotations: {}
+  resources:
+    limits: {}
+    requests: {}
+
+livenessProbe:
+  tcpSocket:
+    port: 9083
+  initialDelaySeconds: 45
+  periodSeconds: 10
+
+readinessProbe:
+  tcpSocket:
+    port: 9083
+  initialDelaySeconds: 30
+  periodSeconds: 5

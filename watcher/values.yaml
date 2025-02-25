@@ -1,0 +1,77 @@
+# Default values for chart.
+
+replicaCount: 1
+
+image:
+  repository: ""
+  pullPolicy: Always
+  tag: "latest"
+
+istio:
+  enabled: false
+
+config:
+  host: 0.0.0.0
+  port: 65432
+  postgres:
+    host: ""
+    port: 5432
+    database: ""
+    user: ""
+    pool_min_size: 1
+    pool_max_size: 5
+  kafka:
+    cluster_host: ""
+    topic: ""
+  global:
+    secret_name: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: "default"
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 65432
+
+ingress:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 300m
+    memory: 256Mi
+  requests:
+    cpu: 200m
+    memory: 128Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

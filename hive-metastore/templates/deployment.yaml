@@ -1,0 +1,120 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hive-metastore.name" . }}
+  labels:
+    {{- include "hive-metastore.labels" . | nindent 4 }}
+  {{- if .Values.reloader }}
+  annotations:
+    reloader.stakater.com/auto: "true"
+  {{- end }}
+spec:
+  replicas: {{ .Values.hiveMetastore.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "hive-metastore.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "hive-metastore.labels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if or (.Values.serviceAccount.create) (.Values.serviceAccountName) }}
+      serviceAccountName: {{ include "hive-metastore.serviceAccountName" . }}
+      {{- end }}
+      securityContext:
+      {{- if .Values.hiveMetastore.podSecurityContext }}
+        {{- toYaml .Values.hiveMetastore.podSecurityContext | nindent 8 }}
+      {{- end }}
+      initContainers:
+      - name: wait-for-init-database
+        image: "alpine/k8s:1.24.8"
+        command: ['/bin/sh', '-c', "until [[ $(kubectl get job -o yaml {{ include "hive-metastore.name" . }}-init-database | grep 'type: Complete' | wc -l) -eq 1 ]]; do echo waiting for database initialization; sleep 5; done"]
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.hiveMetastore.image.repository}}:{{ .Values.hiveMetastore.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.hiveMetastore.image.pullPolicy }}
+          command: ['/bin/sh', '-c', '/opt/hive-metastore/bin/start-hive-metastore.sh']
+          env:
+            - name: HIVE_METASTORE_SERVICE_NAME
+              value: {{ include "hive-metastore.name" . }}
+            - name: HIVE_METASTORE_SERVICE_PORT
+              value: {{ .Values.hiveMetastore.service.port | quote }}
+            - name: HIVE_METASTORE_DATABASE_URL
+              value: {{ include "hive-metastore.postgresql.url" . }}
+            - name: HIVE_METASTORE_DATABASE_USERNAME
+              value: {{ include "hive-metastore.postgresql.username" . }}
+            - name: HIVE_METASTORE_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.auth.secretName }}
+                  key: {{ .Values.postgresql.auth.userPasswordKey }}
+            - name: S3_MINIO_ENDPOINT
+              value: {{ .Values.objectStore.minio.endpoint }}
+            {{- if and .Values.objectStore.minio.existingSecret .Values.objectStore.minio.existingSecretAccessKey }}
+            - name: S3_MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.objectStore.minio.existingSecret }}
+                  key: {{ .Values.objectStore.minio.existingSecretAccessKey }}
+            {{- else if .Values.objectStore.minio.existingSecret }}
+            - name: S3_MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.objectStore.minio.existingSecret }}
+                  key: "MINIO_ACCESS_KEY"
+            {{- else }}
+            - name: S3_MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "hive-metastore.name" . }}-minio-credentials
+                  key: "MINIO_ACCESS_KEY"
+            {{- end }}
+            {{- if and .Values.objectStore.minio.existingSecret .Values.objectStore.minio.existingSecretSecretKey }}
+            - name: S3_MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.objectStore.minio.existingSecret }}
+                  key: {{ .Values.objectStore.minio.existingSecretSecretKey }}
+            {{- else if .Values.objectStore.minio.existingSecret }}
+            - name: S3_MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.objectStore.minio.existingSecret }}
+                  key: "MINIO_SECRET_ACCESS_KEY"
+            {{- else }}
+            - name: S3_MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "hive-metastore.name" . }}-minio-credentials
+                  key: "MINIO_SECRET_ACCESS_KEY"
+            {{- end }}         
+            # Extra container environment
+            {{- with .Values.hiveMetastore.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+          {{- with .Values.hiveMetastore.extraEnvFrom }}
+          envFrom:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: 9083
+              protocol: TCP
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          resources:
+          {{- toYaml .Values.hiveMetastore.resources | nindent 12 }}
+          volumeMounts:
+            - name: hive-metastore-config
+              mountPath: /opt/hive-metastore/metastore-site.xml
+              subPath: metastore-site.xml
+      volumes:
+        - name: hive-metastore-config
+          configMap:
+            name: {{ include "hive-metastore.name" . }}-conf
