@@ -1,67 +1,74 @@
 # backend
 
-![Version: 0.1.9](https://img.shields.io/badge/Version-0.1.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.10](https://img.shields.io/badge/AppVersion-0.2.10-informational?style=flat-square)
 
-A Helm chart for the Foundation API
+A Helm chart for Kubernetes
 
 ## Values
+
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| **affinity** | object | `{}` | Node affinity rules to schedule pods on specific nodes. |
-| **autoscaling.enabled** | bool | `true` | Enable or disable horizontal pod autoscaling. |
-| **autoscaling.maxReplicas** | int | `5` | The maximum number of pod replicas when autoscaling. |
-| **autoscaling.minReplicas** | int | `1` | The minimum number of pod replicas when autoscaling. |
-| **autoscaling.targetCPUUtilizationPercentage** | int | `80` | Target average CPU utilization percentage for autoscaling. |
-| **autoscaling.targetMemoryUtilizationPercentage** | int | `80` | Target average memory utilization percentage for autoscaling. |
-| **config.host** | string | `"0.0.0.0"` | The host address on which the application listens. |
-| **config.port** | int | `9000` | The port number on which the application listens. |
-| **config.postgres.database** | string | `"foundation"` | The name of the PostgreSQL database to connect to. |
-| **config.postgres.host** | string | `"foundation-postgres"` | The hostname or service name for PostgreSQL. |
-| **config.postgres.pool_max_size** | int | `5` | The maximum number of connections in the PostgreSQL connection pool. |
-| **config.postgres.pool_min_size** | int | `1` | The minimum number of connections in the PostgreSQL connection pool. |
-| **config.postgres.port** | int | `5432` | The port on which PostgreSQL is running. |
-| **config.postgres.user** | string | `"foundation"` | The username for connecting to PostgreSQL. |
-| **development.enabled** | bool | `false` | Enables development-specific features or configurations. |
-| **image.pullPolicy** | string | `"Always"` | The Kubernetes image pull policy. |
-| **image.repository** | string | `""` | The container image repository for the backend. |
-| **image.tag** | string | `"latest"` | The tag for the container image. |
-| **imagePullSecrets** | list | `[]` | Secrets to use for pulling private images. |
-| **ingress.annotations."kubernetes.io/ingress.class"** | string | `"tailscale"` | Specifies the ingress class to use. |
-| **ingress.annotations."kubernetes.io/tls-acme"** | string | `"true"` | Enables automatic TLS certificate generation with ACME. |
-| **ingress.className** | string | `"tailscale"` | The ingress class name. |
-| **ingress.enabled** | bool | `true` | Enable or disable ingress for the application. |
-| **ingress.hosts[0].host** | string | `"api"` | The hostname for the ingress resource. |
-| **ingress.hosts[0].paths[0].path** | string | `"/"` | The path to route traffic to. |
-| **ingress.hosts[0].paths[0].pathType** | string | `"ImplementationSpecific"` | The type of path matching to use (e.g., `Prefix`, `Exact`, or `ImplementationSpecific`). |
-| **labels.app** | string | `"foundation-api"` | The application label used for the pods and services. |
-| **livenessProbe.httpGet.path** | string | `"/api/.well-known/status"` | The HTTP path for the liveness probe. |
-| **livenessProbe.httpGet.periodSeconds** | int | `10` | How often (in seconds) to perform the liveness probe. |
-| **livenessProbe.httpGet.port** | int | `9000` | The port to use for the liveness probe. |
-| **livenessProbe.initialDelaySeconds** | int | `10` | The initial delay before performing the first liveness probe. |
-| **nodeSelector** | object | `{}` | Node selector rules for scheduling pods. |
-| **pdb.enabled** | bool | `true` | Enable or disable the PodDisruptionBudget. |
-| **pdb.maxUnavailable** | string | `"50%"` | The maximum number or percentage of unavailable pods during a disruption. |
-| **pdb.selector.app** | string | `"backend"` | The app label used to match pods for the PodDisruptionBudget. |
-| **podAnnotations** | object | `{}` | Annotations to add to the pod template. |
-| **podSecurityContext.fsGroup** | int | `2000` | The file system group ID for the pods. |
-| **readinessProbe.initialDelaySeconds** | int | `60` | The initial delay before performing the first readiness probe. |
-| **readinessProbe.tcpSocket.periodSeconds** | int | `10` | How often (in seconds) to perform the readiness probe. |
-| **readinessProbe.tcpSocket.port** | int | `9000` | The port to use for the readiness probe. |
-| **replicaCount** | int | `1` | The initial number of pod replicas. |
-| **resources** | object | `{}` | Resource requests and limits for the containers. |
-| **securityContext.capabilities.drop[0]** | string | `"ALL"` | The capabilities to drop for the container. |
-| **securityContext.readOnlyRootFilesystem** | bool | `true` | Specifies if the container’s root filesystem is read-only. |
-| **securityContext.runAsNonRoot** | bool | `true` | Ensures the container runs as a non-root user. |
-| **securityContext.runAsUser** | int | `1000` | The user ID for running the container. |
-| **service.port** | int | `80` | The port exposed by the Kubernetes service. |
-| **service.type** | string | `"ClusterIP"` | The type of Kubernetes service (e.g., `ClusterIP`, `NodePort`, `LoadBalancer`). |
-| **serviceAccount.annotations** | object | `{}` | Annotations to add to the service account. |
-| **serviceAccount.create** | bool | `false` | Enable or disable the creation of a service account. |
-| **serviceAccount.name** | string | `"default"` | The name of the service account to use. |
-| **tolerations** | list | `[]` | Tolerations for scheduling pods on tainted nodes. |
-| **vpa.enabled** | bool | `false` | Enable or disable the Vertical Pod Autoscaler. |
-| **vpa.maxAllowed.cpu** | string | `"800m"` | The maximum CPU resources allowed by the Vertical Pod Autoscaler. |
-| **vpa.maxAllowed.memory** | string | `"512Mi"` | The maximum memory resources allowed by the Vertical Pod Autoscaler. |
-| **vpa.minAllowed.cpu** | string | `"100m"` | The minimum CPU resources allowed by the Vertical Pod Autoscaler. |
-| **vpa.minAllowed.memory** | string | `"128Mi"` | The minimum memory resources allowed by the Vertical Pod Autoscaler. |
-| **vpa.updateMode** | string | `"Auto"` | The update mode for the Vertical Pod Autoscaler (e.g., `Auto`, `Off`, `Initial`). |
+| affinity | object | `{}` |  |
+| autoscaling.enabled | bool | `true` |  |
+| autoscaling.maxReplicas | int | `5` |  |
+| autoscaling.minReplicas | int | `1` |  |
+| autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| autoscaling.targetMemoryUtilizationPercentage | int | `80` |  |
+| config.host | string | `""` |  |
+| config.kafka.cluster_host | string | `""` |  |
+| config.logging_level | string | `""` |  |
+| config.port | string | `""` |  |
+| config.postgres.database | string | `nil` |  |
+| config.postgres.host | string | `nil` |  |
+| config.postgres.pool_max_size | int | `5` |  |
+| config.postgres.pool_min_size | int | `1` |  |
+| config.postgres.port | int | `5432` |  |
+| config.postgres.user | string | `nil` |  |
+| config.proxy_token_enabled | bool | `false` |  |
+| config.secret_key | string | `""` |  |
+| development.enabled | bool | `false` |  |
+| image.pullPolicy | string | `"Always"` |  |
+| image.repository | string | `""` |  |
+| image.tag | string | `"latest"` |  |
+| imagePullSecrets | list | `[]` |  |
+| ingress.annotations | object | `{}` |  |
+| ingress.className | string | `""` |  |
+| ingress.enabled | bool | `false` |  |
+| ingress.hosts[0].host | string | `""` |  |
+| ingress.hosts[0].paths[0].path | string | `"/"` |  |
+| ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
+| labels.app | string | `"foundation-api"` |  |
+| livenessProbe.httpGet.path | string | `"/api/.well-known/status"` |  |
+| livenessProbe.httpGet.periodSeconds | int | `10` |  |
+| livenessProbe.httpGet.port | int | `9000` |  |
+| livenessProbe.initialDelaySeconds | int | `10` |  |
+| nodeSelector | object | `{}` |  |
+| pdb.enabled | bool | `true` |  |
+| pdb.maxUnavailable | string | `"50%"` |  |
+| pdb.selector.app | string | `"backend"` |  |
+| podAnnotations | object | `{}` |  |
+| podSecurityContext.fsGroup | int | `2000` |  |
+| readinessProbe.initialDelaySeconds | int | `60` |  |
+| readinessProbe.tcpSocket.periodSeconds | int | `10` |  |
+| readinessProbe.tcpSocket.port | int | `9000` |  |
+| replicaCount | int | `1` |  |
+| resources | object | `{}` |  |
+| securityContext.capabilities.drop[0] | string | `"ALL"` |  |
+| securityContext.readOnlyRootFilesystem | bool | `true` |  |
+| securityContext.runAsNonRoot | bool | `true` |  |
+| securityContext.runAsUser | int | `1000` |  |
+| service.port | int | `80` |  |
+| service.type | string | `"ClusterIP"` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `false` |  |
+| serviceAccount.name | string | `"default"` |  |
+| tolerations | list | `[]` |  |
+| vpa.enabled | string | `""` |  |
+| vpa.maxAllowed.cpu | string | `"800m"` |  |
+| vpa.maxAllowed.memory | string | `"512Mi"` |  |
+| vpa.minAllowed.cpu | string | `"100m"` |  |
+| vpa.minAllowed.memory | string | `"128Mi"` |  |
+| vpa.updateMode | string | `"Auto"` |  |
+
+----------------------------------------------
+Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)
